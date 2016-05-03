@@ -2,13 +2,13 @@ Rails.application.routes.draw do
 
   root 'products#index'
 
+  resources :products
+
   get 'reviews/index'
 
   get 'order_items/index'
 
   get 'orders/index'
-
-  get 'products/index'
 
   get 'users/index'
 
