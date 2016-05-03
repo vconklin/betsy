@@ -8,3 +8,10 @@
 </ul>
 
 <%= link_to "Add a Review", new_product_review_path(@product.id) %>
+
+<h2>Reviews</h2>
+  <% if @product.reviews == [] %>
+    <p>No reviews yet.</p>
+  <% else %>
+    <p>This product has <%= @product.reviews.count %> review.</p>
+  <% end %>
