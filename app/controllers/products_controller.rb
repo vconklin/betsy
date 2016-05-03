@@ -7,4 +7,8 @@ class ProductsController < ApplicationController
     @products = Product.where(category: params[:category])
     redirect_to root_path
   end
+
+  def show
+    @product = Product.find(params[:id])
+  end
 end
