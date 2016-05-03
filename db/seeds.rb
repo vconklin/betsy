@@ -1,6 +1,6 @@
 product_list = [
-  { name: "Beyonce's tears (from writing Lemonade)", price: rand(1000..99999), user_id: rand(1..3), stock: rand(1..10), category: "beyonce", description: ""},
-  { name: "Air Beyonce breathed", price: rand(1000..99999), user_id: rand(1..3), stock: rand(1..10), category: "beyonce", description:""},
+  { name: "Beyonce's tears (from writing Lemonade)", price: rand(1000..99999), user_id: rand(1..3), stock: 0, category: "beyonce", description: ""},
+  { name: "Air Beyonce breathed", price: rand(1000..99999), user_id: rand(1..3), stock: 1, category: "beyonce", description:""},
   { name: "Bee Shack", price: rand(1000..99999), user_id: rand(1..3), stock: rand(1..10), category: "bee", description: ""},
   { name: "Bee Cool", price: rand(1000..99999), user_id: rand(1..3), stock: rand(1..10), category: "", description: ""},
   { name: "Detachable Stingers", price: rand(1000..99999), user_id: rand(1..3), stock: rand(1..10), category: "bee", description: ""},
