@@ -1,0 +1,8 @@
+<h1><%= @product.name %></h1>
+<ul>
+  <li>Description: <%= @product.description %></li>
+  <li>Price: <%= "$#{@product.price/100.00}" %></li>
+  <% if @product.stock == 1 %>
+  <li><%= "Stock: Only 1 available!" %></li>
+  <% end %>
+</ul>
