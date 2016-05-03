@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   get 'cart/index'
 
-  root 'products#index'
+  # root 'products#index'
+  root 'sessions#create'
 
   resources :products
 

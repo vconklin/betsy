@@ -1,4 +1,7 @@
 class CartController < ApplicationController
-  def index
+
+  def show
+    @your_cart = Cart.find(session[:cart_id])
+    render :cart
   end
 end
