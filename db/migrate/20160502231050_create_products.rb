@@ -5,6 +5,8 @@ class CreateProducts < ActiveRecord::Migration
       t.integer :price, null: false
       t.integer :user_id, null: false
       t.integer :stock, null: false
+      t.string :category
+      t.string :description
 
       t.timestamps null: false
     end
