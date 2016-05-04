@@ -18,8 +18,9 @@
       <%= review.rating %> stars
       by <%= review.name %>
          <% if review.name == "" %>Anonymous<% end %>
+      on <%= review.created_at.strftime("%m/%d/%Y") %>
          <% if review.text? %>
-          "<%= review.text %>"
+          <br>"<%= review.text %>"
           <% end %>
       <br><br>
     <% end %>
