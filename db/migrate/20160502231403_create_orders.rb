@@ -8,6 +8,7 @@ class CreateOrders < ActiveRecord::Migration
       t.string :exp_date, null: false
       t.integer :cvv, null: false
       t.string :zip, null: false
+      t.integer :user_id, null: false
 
       t.timestamps null: false
     end
