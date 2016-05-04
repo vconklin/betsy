@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20160503221143) do
     t.integer  "stock",       null: false
     t.string   "category"
     t.string   "description"
+    t.string   "status",      null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
