@@ -16,31 +16,25 @@ ActiveRecord::Schema.define(version: 20160503221143) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "carts", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "order_items", force: :cascade do |t|
     t.integer  "order_id",   null: false
     t.integer  "product_id", null: false
     t.integer  "quantity",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "cart_id"
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string   "card_name",   null: false
-    t.string   "email",       null: false
-    t.string   "address",     null: false
-    t.integer  "credit_card", null: false
-    t.string   "exp_date",    null: false
-    t.integer  "cvv",         null: false
-    t.string   "zip",         null: false
+    t.string   "card_name"
+    t.string   "email"
+    t.string   "address"
+    t.integer  "credit_card"
+    t.string   "exp_date"
+    t.integer  "cvv"
+    t.string   "zip"
+    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "cart_id"
   end
 
   create_table "products", force: :cascade do |t|
