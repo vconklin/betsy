@@ -14,14 +14,19 @@
     <p>None yet, why not add one?</p>
   <% else %>
     <p>Overall: <%= @overall_rating %> stars</p>
+
     <% @product.reviews.each do |review| %>
       <%= review.rating %> stars
+
       by <%= review.name %>
-         <% if review.name == "" %>Anonymous<% end %>
+      <% if review.name == "" %>Anonymous<% end %>
+
       on <%= review.created_at.strftime("%m/%d/%Y") %>
-         <% if review.text? %>
-          <br>"<%= review.text %>"
-          <% end %>
+
+      <% if review.text? %><br>
+      "<%= review.text %>"
+      <% end %>
+
       <br><br>
     <% end %>
   <% end %>
