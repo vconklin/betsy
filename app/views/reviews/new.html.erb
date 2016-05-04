@@ -1,4 +1,6 @@
-<h1> ADD YOUR REVIEW HERE! </h1>
+<h2> Add a Review for <%= @product.name %> </h2>
+
+<p>Reviews require a rating between 1-5. Name and review text are optional.</p>
 
 <%= form_for [@product, @review] do |f| %>
   <%= f.label :name %>:

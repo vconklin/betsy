@@ -10,5 +10,6 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @overall_rating = @product.reviews.average(:rating).truncate(2).to_s
   end
 end
