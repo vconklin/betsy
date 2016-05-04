@@ -4,15 +4,15 @@ Rails.application.routes.draw do
 
   root 'products#index'
 
-<<<<<<< 24f6c93c34c64337f9b0e1be9ddcca5abf35b0b5
   resources :products do
     resources :reviews
   end
-  resources :users, :only => [:new, :create]
-  resources :sessions, :only => [:create, :destroy, :new]
-  get 'reviews/index'
 
->>>>>>> nested reviews routes in products
+  resources :users, :only => [:new, :create]
+
+  resources :sessions, :only => [:create, :destroy, :new]
+
+  get 'reviews/index'
 
   get 'order_items/index'
 
