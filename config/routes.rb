@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'cart/index'
-
-  root 'products#index'
+  root 'sessions#create_cart'
 
   resources :products
 
@@ -10,7 +8,7 @@ Rails.application.routes.draw do
 
   get 'order_items/index'
 
-  get 'orders/index'
+  resources :orders, only: [:new, :create, :show]
 
   get 'users/index'
 
