@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20160503211443) do
     t.integer  "quantity",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "cart_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -40,7 +39,6 @@ ActiveRecord::Schema.define(version: 20160503211443) do
     t.string   "zip",         null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "cart_id"
   end
 
   create_table "products", force: :cascade do |t|

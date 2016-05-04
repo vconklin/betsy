@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'sessions#create_cart'
+  root 'sessions#create_order'
 
   resources :products
 
