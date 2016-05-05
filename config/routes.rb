@@ -2,7 +2,13 @@ Rails.application.routes.draw do
 
   root 'sessions#create_order'
 
-  resources :products
+  resources :products do
+    resources :reviews
+  end
+
+  resources :users, :only => [:new, :create]
+
+  resources :sessions, :only => [:create, :destroy, :new]
 
   get 'reviews/index'
 
@@ -10,7 +16,10 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:new, :create, :show]
 
-  get 'users/index'
+  get    "/login", to: "sessions#new", as: :login
+  delete "/logout", to: "sessions#destroy", as: :logout
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

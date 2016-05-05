@@ -7,6 +7,7 @@ class CreateProducts < ActiveRecord::Migration
       t.integer :stock, null: false
       t.string :category
       t.string :description
+      t.string :status, null: false
 
       t.timestamps null: false
     end

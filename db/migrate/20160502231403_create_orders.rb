@@ -8,6 +8,10 @@ class CreateOrders < ActiveRecord::Migration
       t.string :exp_date
       t.integer :cvv
       t.string :zip
+<<<<<<< HEAD
+=======
+      t.integer :user_id
+>>>>>>> master
 
       t.timestamps null: false
     end
