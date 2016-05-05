@@ -1,11 +1,18 @@
 <h1>Your Cart</h1>
-<%= @order.id %>
 
 <ul>
   <% @order_items.each do |item| %>
-    <li><%= item.product_id %></li>
-    <li><%= item.order_id %></li>
+    <% product = Product.find(item.product_id) %>
+    <li>
+      <%= product.name %>
+      <ul>
+        <li>Price: <%= product.price %></li>
+        <li>Quantity: <%= item.quantity %></li>
+      </ul>
+    </li>
   <% end %>
 </ul>
 
 <p>Proceed to Checkout</p>
+
+<%= link_to "Back To Shop", products_path %>
