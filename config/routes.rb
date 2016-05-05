@@ -7,9 +7,14 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
-  resources :users, :only => [:new, :create]
+  resources :products
+  resources :users, :only => [:new, :create, :show, :products]
 
   resources :sessions, :only => [:create, :destroy, :new]
+
+
+  get "/users/:id/products/" => "users#product"
+  get 'reviews/index'
 
   get    "/login", to: "sessions#new", as: :login
   delete "/logout", to: "sessions#destroy", as: :logout
@@ -22,6 +27,7 @@ Rails.application.routes.draw do
   post '/cart' => 'order_items#create'
 
   delete '/cart' => 'order_items#destroy'
+
 
 
 

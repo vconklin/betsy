@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
+    @user ||= User.find_by(id: session[:user_id])
   end
 
   def by_category
