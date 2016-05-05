@@ -10,21 +10,45 @@ class OrdersController < ApplicationController
   end
 
   # Purchasing an order makes the following changes:
-  # Reduces the number of inventory for each product
-  # Changes the order state from "pending" to “paid” : 0 == not paid, 1 == paid
   # Clears the current cart
+
   def complete_purchase
-    time = Time.now
-    order = Order.find(params[:id])
-    order.completed_purchase = time
-    order.completion_purchase = "paid"
-      if order.save
-      #  flash[:notice] = "Task completed"
-       redirect_to root_path
-      else
-       render :new
-      end
+    order = Order.find(session[:order_id])
+    order.completed_time = Time.now
+    order.completion_status = "paid"
+    reduce_inventory(order)
+    if order.save
+    redirect_to root_path
+    else
+      render :new
+    end
   end
+
+  def reduce_inventory(order)
+  # check that there is enough inventory here
+  # add check for inventory and return error if no inventory
+    if product.stock < 0
+      flash[:error] = "Out of Stock"
+      redirect_to produc_path(params[:product_id])
+    end
+    items = order.order_items
+    items.each do |item|
+    product = item.product
+    quantity = item.quantity
+    # if product.stock is not greater then zero, deal with error
+      if product.stock < 0
+        flash[:error] = "Out of Stock"
+        redirect_to product_path(params[:product_id])
+      else
+        product.stock = product.stock - quantity
+      end
+    end
+  end
+
+  def find_order
+    @order = Order.find(session[:order_id])
+  end
+
   def create
     @order.cart_id = (session[:cart_id])
       if @order.save
@@ -39,5 +63,4 @@ class OrdersController < ApplicationController
   def order_param
     params.permit(order: [:card_name, :email, :address, :credit_card, :exp_date, :cvv, :zip])
   end
-
 end
