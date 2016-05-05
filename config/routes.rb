@@ -16,11 +16,12 @@ Rails.application.routes.draw do
 
   # this route is named non-restfully because an "order" has two main screens: the cart screen and the checkout screen. The url should not contain an id because it is identified by the session, not by any params passed through the url.
   get '/cart' => 'order_items#index', as: 'cart'
+  # presumably there will be a similar get '/checkout' route
 
   # adds the item to that specific order
-  post '/cart' => 'order_items#create', as: 'add_to_cart'
+  post '/cart' => 'order_items#create'
 
-  # presumably there will be a similar get '/checkout' route
+  delete '/cart' => 'order_items#destroy'
 
 
 
