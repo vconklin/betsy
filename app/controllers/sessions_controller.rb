@@ -3,10 +3,16 @@ class SessionsController < ApplicationController
   def create_order
     # this is for creating the session that is generated immediately upon entering the site.
     # as in, before login.
-    @order = Order.create
+    @order = Order.create  # this is a brand new cart
     session[:order_id] = @order.id
     redirect_to products_path
   end
+
+
+
+
+
+
 
   def create
     # this is for creating a new session after login
