@@ -1,9 +1,10 @@
 <h1>Your Cart</h1>
+<%= @order.id %>
 
 <ul>
   <% @order_items.each do |item| %>
-    <li><%= item %></li>
-    <li><%= item %></li>
+    <li><%= item.product_id %></li>
+    <li><%= item.order_id %></li>
   <% end %>
 </ul>
 
