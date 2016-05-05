@@ -12,7 +12,9 @@ class OrderItemsController < ApplicationController
 
   def create
     # gets the product passed in from the link_to on the products/show page.. how?!
-    @order_item = OrderItem.new(order_id: session[:order_id], product_id: params[:product_id])
+    @order_item = OrderItem.new(order_id: session[:order_id], quantity: 1, product_id: params[:product_id])
+    # @order_item.save
+    # redirect_to cart_path
     if @order_item.save
       redirect_to cart_path
     else
