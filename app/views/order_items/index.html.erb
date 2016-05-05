@@ -1,18 +1,24 @@
 <h1>Your Cart</h1>
 
-<ul>
-  <% @order_items.each do |item| %>
-    <% product = Product.find(item.product_id) %>
-    <li>
-      <%= product.name %>
-      <ul>
-        <li>Price: <%= product.price %></li>
-        <li>Quantity: <%= item.quantity %></li>
-        <li><%= link_to "Remove This Item", {:controller => :order_items, :action => 'destroy', :id => item.id}, method: :delete %></li>
-      </ul>
-    </li>
-  <% end %>
-</ul>
+  <ul>
+    <% @order_items.each do |item| %>
+      <% product = Product.find(item.product_id) %>
+      <li>
+        <%= product.name %>
+        <ul>
+          <li>Price: <%= product.price %></li>
+          <li>
+            <%= form_for item, url: cart_path(item.id) do |f| %>
+              <%= f.label :quantity %>
+              <%= f.select :quantity, [1..product.stock] %>
+              <%= f.submit "Update Quantity" %>
+            <% end %>
+          </li>
+          <li><%= link_to "Remove This Item", {:controller => :order_items, :action => 'destroy', :id => item.id}, method: :delete %></li>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
 
 <p>Proceed to Checkout</p>
 

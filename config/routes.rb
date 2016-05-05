@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   # adds the item to that specific order
   post '/cart' => 'order_items#create'
 
+  patch '/cart/:id' => 'order_items#update'
+
   delete '/cart' => 'order_items#destroy'
 
 
