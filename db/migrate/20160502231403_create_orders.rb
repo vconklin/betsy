@@ -1,13 +1,14 @@
 class CreateOrders < ActiveRecord::Migration
   def change
     create_table :orders do |t|
-      t.string :card_name, null: false
-      t.string :email, null: false
-      t.string :address, null: false
-      t.integer :credit_card, null: false
-      t.string :exp_date, null: false
-      t.integer :cvv, null: false
-      t.string :zip, null: false
+      t.string :card_name
+      t.string :email
+      t.string :address
+      t.integer :credit_card
+      t.string :exp_date
+      t.integer :cvv
+      t.string :zip
+      t.integer :user_id
 
       t.timestamps null: false
     end

@@ -6,3 +6,27 @@
   <li><%= "Stock: Only 1 available!" %></li>
   <% end %>
 </ul>
+
+<%= link_to "Add a Review", new_product_review_path(@product.id) %>
+
+<h2>Reviews</h2>
+  <% if @product.reviews == [] %>
+    <p>None yet, why not add one?</p>
+  <% else %>
+    <p>Overall: <%= @overall_rating %> stars</p>
+
+    <% @product.reviews.each do |review| %>
+      <%= review.rating %> stars
+
+      by <%= review.name %>
+      <% if review.name == "" %>Anonymous<% end %>
+
+      on <%= review.created_at.strftime("%m/%d/%Y") %>
+
+      <% if review.text? %><br>
+      "<%= review.text %>"
+      <% end %>
+
+      <br><br>
+    <% end %>
+  <% end %>

@@ -5,7 +5,13 @@ Rails.application.routes.draw do
   # root 'products#index'
   root 'sessions#create'
 
-  resources :products
+  resources :products do
+    resources :reviews
+  end
+
+  resources :users, :only => [:new, :create]
+
+  resources :sessions, :only => [:create, :destroy, :new]
 
   get 'reviews/index'
 
@@ -13,7 +19,10 @@ Rails.application.routes.draw do
 
   get 'orders/index'
 
-  get 'users/index'
+  get    "/login", to: "sessions#new", as: :login
+  delete "/logout", to: "sessions#destroy", as: :logout
+
+
 
   get '/cart' => 'carts#show', as: 'cart'
 
