@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'cart/index'
-
-  root 'products#index'
+  # because we need to create a session immediately upon entering the site, for guest users
+  root 'sessions#create_order'
 
   resources :products do
     resources :reviews
@@ -12,14 +11,19 @@ Rails.application.routes.draw do
 
   resources :sessions, :only => [:create, :destroy, :new]
 
-  get 'reviews/index'
-
-  get 'order_items/index'
-
-  get 'orders/index'
-
   get    "/login", to: "sessions#new", as: :login
   delete "/logout", to: "sessions#destroy", as: :logout
+
+  # this route is named non-restfully because an "order" has two main screens: the cart screen and the checkout screen. The url should not contain an id because it is identified by the session, not by any params passed through the url.
+  get '/cart' => 'order_items#index', as: 'cart'
+
+  # adds the item to that specific order
+  post '/cart' => 'order_items#create', as: 'add_to_cart'
+
+  # presumably there will be a similar get '/checkout' route
+
+
+
 
 
 

@@ -30,3 +30,5 @@
       <br><br>
     <% end %>
   <% end %>
+
+  <%= link_to "Add To Cart", add_to_cart_path(product_id: @product.id), method: :post %>
