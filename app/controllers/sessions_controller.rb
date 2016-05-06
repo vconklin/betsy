@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-
+  # guests
   def create_order
     # this is for creating the session that is generated immediately upon entering the site.
     # as in, before login.
@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 
 
 
-
+  # logged in users
   def create
     # this is for creating a new session after login
     user = User.log_in(params[:email], params[:password])

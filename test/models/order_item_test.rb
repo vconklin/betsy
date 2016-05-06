@@ -9,5 +9,8 @@ class OrderItemTest < ActiveSupport::TestCase
     assert_not_nil order_items(:beyonce_air_item).quantity
   end
 
-  
+  test "" do
+
+  end
+
 end
