@@ -122,7 +122,7 @@
         null,
         null,
         1,
-        1,
+        0,
         null,
         null,
         null,
@@ -223,41 +223,7 @@
         null,
         null
       ],
-      "/Users/annamason/C5/projects/betsy/test/controllers/orders_controller_test.rb": [
-        1,
-        null,
-        1,
-        null,
-        null
-      ],
-      "/Users/annamason/C5/projects/betsy/test/controllers/products_controller_test.rb": [
-        1,
-        null,
-        1,
-        null,
-        null
-      ],
-      "/Users/annamason/C5/projects/betsy/test/controllers/reviews_controller_test.rb": [
-        1,
-        null,
-        1,
-        null,
-        1,
-        2,
-        null,
-        null,
-        1,
-        1,
-        1,
-        null,
-        null,
-        1,
-        1,
-        null,
-        null,
-        null
-      ],
-      "/Users/annamason/C5/projects/betsy/test/controllers/sessions_controller_test.rb": [
+      "/Users/annamason/C5/projects/betsy/test/models/order_test.rb": [
         1,
         null,
         1,
@@ -266,10 +232,59 @@
         null,
         null
       ],
-      "/Users/annamason/C5/projects/betsy/test/controllers/users_controller_test.rb": [
+      "/Users/annamason/C5/projects/betsy/test/models/product_test.rb": [
         1,
         null,
         1,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/annamason/C5/projects/betsy/test/models/review_test.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/annamason/C5/projects/betsy/test/models/user_test.rb": [
+        1,
+        null,
+        1,
+        null,
+        null,
         null,
         null
       ],
@@ -319,73 +334,8 @@
         0,
         null,
         null
-      ],
-      "/Users/annamason/C5/projects/betsy/app/controllers/reviews_controller.rb": [
-        1,
-        null,
-        1,
-        1,
-        1,
-        null,
-        null,
-        1,
-        0,
-        0,
-        0,
-        null,
-        0,
-        null,
-        null,
-        null,
-        1,
-        null,
-        1,
-        0,
-        null,
-        null,
-        null
-      ],
-      "/Users/annamason/C5/projects/betsy/app/controllers/application_controller.rb": [
-        1,
-        null,
-        null,
-        1,
-        1,
-        null,
-        1,
-        1,
-        null,
-        null
-      ],
-      "/Users/annamason/C5/projects/betsy/app/helpers/application_helper.rb": [
-        1,
-        null
-      ],
-      "/Users/annamason/C5/projects/betsy/app/helpers/order_items_helper.rb": [
-        1,
-        null
-      ],
-      "/Users/annamason/C5/projects/betsy/app/helpers/orders_helper.rb": [
-        1,
-        null
-      ],
-      "/Users/annamason/C5/projects/betsy/app/helpers/products_helper.rb": [
-        1,
-        null
-      ],
-      "/Users/annamason/C5/projects/betsy/app/helpers/reviews_helper.rb": [
-        1,
-        null
-      ],
-      "/Users/annamason/C5/projects/betsy/app/helpers/sessions_helper.rb": [
-        1,
-        null
-      ],
-      "/Users/annamason/C5/projects/betsy/app/helpers/users_helper.rb": [
-        1,
-        null
       ]
     },
-    "timestamp": 1462573196
+    "timestamp": 1462575867
   }
 }
