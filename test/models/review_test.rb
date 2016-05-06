@@ -2,33 +2,35 @@ require 'test_helper'
 
 class ReviewTest < ActiveSupport::TestCase
 
-  test "should save a review with a rating and product_id" do
-    assert reviews(:review).save, "Did not save the review with a rating"
+  test "review with valid rating and product will save" do
+    assert reviews(:passing_review).save
   end
 
-  test "should not save review without rating but with product" do
-    review = Review.new(product_id: 1)
-    assert_not review.save, "Saved the review without a rating"
+  test "review saves with valid rating & without a product" do
+    assert reviews(:no_product).save
   end
 
-  test "should not save review without product but with rating" do
-    review = Review.new(rating: 3)
-    assert_not review.save, "Saved the review without a product"
+  test "review belongs to its correct product" do
+    assert_includes products(:passing_product).reviews, reviews(:passing_review)
   end
-  #
-  # test "review must belong to a product" do
-  #   assert_not reviews(:review_with_no_product).valid?, "Saved the review without a product"
-  # end
 
-  # test "review cant exist without a product" do
-  #   assert true
-  # end
-  #
-  # test "review has a rating" do
-  #   assert true
-  # end
-  #
-  # test "review cant exist without a rating" do
-  #   assert true
-  # end
+  test "review with product & no rating wont save" do
+    assert_not reviews(:no_rating).save
+  end
+
+  test "validate for presence of rating" do
+    assert_not reviews(:no_rating).valid?
+    assert_equal [:rating], reviews(:no_rating).errors.keys
+  end
+
+  test "validate for presence of rating between 1-5" do
+    assert_not reviews(:rating_is_8).valid?
+    assert_equal [:rating], reviews(:rating_is_8).errors.keys
+  end
+
+  test "validate for presence of rating thats an integer" do
+    assert_not reviews(:rating_is_b).valid?
+    assert_equal [:rating], reviews(:rating_is_b).errors.keys
+  end
+
 end

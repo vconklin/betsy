@@ -1,5 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-review:
+passing_review:
   rating: 5
-  product: product
+  product: passing_product
+
+no_rating:
+  rating: nil
+  product: passing_product
+
+no_product:
+  rating: 5
+  product: nil
+
+rating_is_8:
+  rating: 8
+  product: passing_product
+
+rating_is_b:
+  rating: "B"
+  product: passing_product

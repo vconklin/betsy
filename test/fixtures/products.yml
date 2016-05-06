@@ -7,7 +7,7 @@ beyonce_air:
   stock: 1
   status: "active"
 
-product:
+passing_product:
   name: "Beyonce Poster"
   price: 100
   user: user
