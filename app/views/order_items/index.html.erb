@@ -1,6 +1,7 @@
 <h1>Your Cart</h1>
 
   <ul>
+    <% total = 0 %>
     <% @order_items.each do |item| %>
       <% product = Product.find(item.product_id) %>
       <li>
@@ -17,8 +18,11 @@
           <li><%= link_to "Remove This Item", {:controller => :order_items, :action => 'destroy', :id => item.id}, method: :delete %></li>
         </ul>
       </li>
+      <% total += (product.price * item.quantity) %>
     <% end %>
   </ul>
+
+  <p>Total: <%= total %></p>
 
 <p>Proceed to Checkout</p>
 
