@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :sessions, :only => [:create, :destroy, :new]
 
+  resources :categories, only: [:create, :new]
 
   get "/users/:id/products/" => "users#product"
   get 'reviews/index'
