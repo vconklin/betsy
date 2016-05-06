@@ -1,6 +1,12 @@
 class SessionsController < ApplicationController
   # guests
   def create_order
+    @order = Order.create
+    session[:order_id] = @order.id
+    redirect_to products_path
+  end 
+
+  def new
     # this is for creating the session that is generated immediately upon entering the site.
     # as in, before login.
     @order = Order.create  # this is a brand new cart

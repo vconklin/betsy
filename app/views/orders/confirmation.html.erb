@@ -1,0 +1,7 @@
+<h3> <%= link_to order.id, order_show_path(order_id: order.id) %></h3>
+
+<p>Quantity Ordered: <%= order_item.quantity %></p>
+
+<p>Order placed on:  <%= @time.localtime.strftime("%B %-d, %Y %I:%M %p") %>
+<p>Order Status: <%= @order.completion_status.capitalize %></p>
+<p>Total Purchase: $ <%= total  %>
