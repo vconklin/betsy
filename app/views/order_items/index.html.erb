@@ -8,9 +8,9 @@
         <ul>
           <li>Price: <%= product.price %></li>
           <li>
-            <%= form_for item, url: cart_path(item.id) do |f| %>
+            <%= form_for(item, url: cart_path(item.id)) do |f| %>
               <%= f.label :quantity %>
-              <%= f.select :quantity, [1..product.stock] %>
+              <%= f.select :quantity, options_for_select((1..product.stock)) %>
               <%= f.submit "Update Quantity" %>
             <% end %>
           </li>
