@@ -11,7 +11,7 @@
   <% @products.each do |product| %>
   <li>
     <%= link_to product.name, product_path(product.id) %>
-    <img src="<%=product.image || "http://az616578.vo.msecnd.net/files/2016/04/24/6359711199706501341141665032_no2.jpg"%>"/>
+    <%= image_tag (product.image) %>
   </li>
   <% end %>
 </ul>
