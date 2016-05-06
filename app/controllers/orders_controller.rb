@@ -62,5 +62,11 @@ class OrdersController < ApplicationController
 
   def order_param
     params.permit(order: [:card_name, :email, :address, :credit_card, :exp_date, :cvv, :zip])
+  end 
+
+  # wait, what are we using this for? we don't need a list of all orders, do we?
+  def index
+    @order = Order.find(session[:order_id])
   end
+
 end
