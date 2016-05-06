@@ -5,6 +5,7 @@
 <thead>
   <tr>
     <th class= "hidden-phone">Name</th>
+    <th>Image</th>
     <th>Description</th>
     <th>Price</th>
     <th>Stock</th>
@@ -18,6 +19,9 @@
     <tr>
     <td class="hidden-phone">
       <%= product.name %>
+    </td>
+    <td>
+      <img src="<%=product.image%>" alt= "No Image Found"/>
     </td>
     <td>
       <%= product.description %>

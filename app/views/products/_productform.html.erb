@@ -10,25 +10,29 @@
 
 <%= form_for @product do |f| %>
 <!-- use the instance to give form_for all the information they need to know about tasks! -->
-  <%= field_set_tag 'Product Information', :html => {:class => "form-control"}  do %>
-    <%= f.label :name,class: "sr-only" %>
+  <%= field_set_tag 'Product Information', :html => {:class => "form-group"}  do %>
+    <%= f.label "Name" %>
     <%= f.text_field :name, placeholder: "Name" %>
 
-    <%= f.label :description,class: "sr-only" %>
+    <%= f.label "Description" %>
     <%= f.text_field :description, placeholder: "Description" %>
 
-    <%= f.label :price,class: "sr-only" %>
+    <%= f.label "Price" %>
     <%= f.text_field :price, placeholder: "price" %>
 
-    <%= f.label :stock,class: "sr-only" %>
+    <%= f.label "Paste Image URL" %>
+    <%= f.text_field :image, placeholder: "image URL" %>
+
+    <%= f.label "Stock" %>
     <%= f.text_field :stock, placeholder: "Stock" %>
 
-    <%= f.label :status %>
+    <%= f.label "Status" %>
     <%= f.select :status, options_for_select([
       ["active"],["retired"]]),{},html_options = {:class => "listBox"}%>
 
     <%= f.hidden_field :user_id, value: params[:user_id] || @product.user_id %>
-    <%= f.submit %>
+
+    <%= f.submit class: "btn btn-primary" %>
 
   <% end %>
 <% end %>

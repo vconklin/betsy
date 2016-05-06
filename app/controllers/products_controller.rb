@@ -43,6 +43,6 @@ skip_before_action :require_login, except: [:index]
   private
 
   def product_access_params
-    params.permit(product: [:name, :description, :stock, :price, :category, :status])
+    params.permit(product: [:name, :description, :stock, :price, :category, :status, :image])
   end
 end
