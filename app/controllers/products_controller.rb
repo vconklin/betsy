@@ -13,9 +13,19 @@ skip_before_action :require_login, except: [:index]
     @user ||= User.find_by(id: session[:user_id])
   end
 
-  def by_category
-    @products = Product.where(category: params[:category], status: "active")
-    redirect_to root_path
+  def new
+    # give them a shell and invite them to fill out the data.  Allows introspection into the object in the view!
+    @product = Product.new
+  end
+
+  def create
+    @product = Product.new(product_access_params[:product])
+    #any validation?
+    if @product.save
+      redirect_to "/vendors/#{@product.vendor_id}/products"
+    else
+      render :new
+    end
   end
 
   def show
