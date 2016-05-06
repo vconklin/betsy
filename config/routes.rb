@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'sessions#create_order'
 
   resources :products do
-    resources :reviews
+    resources :reviews, :only => [:new, :create]
   end
 
   resources :products
