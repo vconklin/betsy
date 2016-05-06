@@ -11,4 +11,8 @@ class ReviewsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should post create" do
+    post :create, :review => { :name => "Anna", :rating => "5", :text => "So great.", :product_id => @product.id }
+  end
+
 end
