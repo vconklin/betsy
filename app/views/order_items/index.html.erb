@@ -10,7 +10,7 @@
           <li>Quantity: <%= item.quantity %>
             <%= form_for(item, url: update_cart_path(item.id), method: :patch) do |f| %>
               <%= f.label "Change Quantity" %>
-              <%= f.select :quantity, options_for_select((1..product.stock)) %>
+              <%= f.select(:quantity, options_for_select((1..product.stock)), include_blank: true) %>
               <%= f.submit "Update" %>
             <% end %>
           </li>
