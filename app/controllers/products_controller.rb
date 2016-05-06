@@ -50,6 +50,11 @@ skip_before_action :require_login, except: [:index]
     end
   end
 
+  def by_category
+    @products = Product.where(category: params[:category], status: "active")
+    redirect_to root_path
+  end
+
   private
 
   def product_access_params
