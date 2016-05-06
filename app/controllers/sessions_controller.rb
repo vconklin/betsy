@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     @order = Order.create
     session[:order_id] = @order.id
     redirect_to products_path
-
+  end 
 
   def new
     # this is for creating the session that is generated immediately upon entering the site.
