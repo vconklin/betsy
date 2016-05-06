@@ -6,3 +6,10 @@ beyonce_air:
   user_id: 1
   stock: 1
   status: "active"
+
+product:
+  name: "Beyonce Poster"
+  price: 100
+  user: user
+  stock: 10
+  status: 1

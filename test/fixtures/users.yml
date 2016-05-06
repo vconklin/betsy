@@ -8,3 +8,8 @@ sally:
   username: "catlover99"
   email: "kittycat@cats.com"
   password_digest: "ok"
+
+user:
+    username: "whoever"
+    email: "a@a.com"
+    password_digest: "ok"

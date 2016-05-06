@@ -1,9 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  rating: 1
-  product_id: 1
-
-two:
-  rating: 1
-  product_id: 1
+review:
+  rating: 5
+  product: product
