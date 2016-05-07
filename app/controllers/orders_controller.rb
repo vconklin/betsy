@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
     order.completion_status = "paid"
     reduce_inventory(order)
     if order.save
-    redirect_to root_path
+      redirect_to products_path
     else
       render :new
     end
@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
   # add check for inventory and return error if no inventory
     if product.stock < 0
       flash[:error] = "Out of Stock"
-      redirect_to produc_path(params[:product_id])
+      redirect_to product_path(params[:product_id])
     end
     items = order.order_items
     items.each do |item|
@@ -49,22 +49,23 @@ class OrdersController < ApplicationController
     @order = Order.find(session[:order_id])
   end
 
-  def create
-    @order.cart_id = (session[:cart_id])
-      if @order.save
-        redirect_to prodcuts_path
-      else
-        render :new
-      end
-  end
+# commenting this out in case until Val and Risha can talk about it, there doesn't seem to be any use for this method, as the order is already created in sessions#create_order, and it looks like it might cause a conflict if it gets called.
+  # def create
+  #   @order.cart_id = (session[:cart_id])
+  #     if @order.save
+  #       redirect_to products_path
+  #     else
+  #       render :new
+  #     end
+  # end
 
   private
 
   def order_param
     params.permit(order: [:card_name, :email, :address, :credit_card, :exp_date, :cvv, :zip])
-  end 
+  end
 
-  # wait, what are we using this for? we don't need a list of all orders, do we?
+  # what is this method doing and why is it private?
   def index
     @order = Order.find(session[:order_id])
   end
