@@ -1,19 +1,16 @@
+# what they ordered
 
-<h1>Order Fullfillment</h1>
-<p>Find me in app/views/orders/index.html.erb</p>
+<h1>Order Complete</h1>
 
-<div class="col-md-10">
- <h3>Order #<%= link_to order.id, dashboard_order_show_path(:order_id => order.id) %></h3>
- <h4>Status: <%= order.status.capitalize %></h4>
+ <h3>Order #<%= link_to order.id, order_show_path(order_id: order.id) %></h3>
+ <h4>Status: <%= order.completion_status.capitalize %></h4>
  <h4>Order Placed: <%= order.created_at.localtime.strftime("%B %-d, %Y %I:%M %p") %></h4>
 
-
- <table class="table">
  <tr>
    <td><%= order.id %></td>
-   <td><%= order.status.capitalize %></td>
+   <td><%= order.completion_status.capitalize %></td>
    <td><%= order.created_at.localtime.strftime("%B %-d, %Y %I:%M %p") %></td>
-   <td><%= link_to "Buyer Details", order_show_path(:order_id => order.id), class: "btn btn-info" %></td>
+   <td><%= link_to "Buyer Details", order_show_path(order_id: order.id), class: "btn btn-info" %></td>
  </tr>
  <% end %>
 <% end %>

@@ -1,7 +1,16 @@
-<h3> <%= link_to order.id, order_show_path(order_id: order.id) %></h3>
+<p> <%= link_to @order.id, order_path(@order.id) %></p>
 
+
+<% total = 0 %>
+<% @order.order_items.each do |order_item| %>
+  <% total+=order_item.quantity * order_item.product.price  %>
+  <p>Your order of: <%=link_to order_item.product.name, product_path(order_item.product.id) %></p>
+
+<h3>Order Details</h3>
+<p>Name: <%=order_item.product.name %>
 <p>Quantity Ordered: <%= order_item.quantity %></p>
+<% end %>
 
-<p>Order placed on:  <%= @time.localtime.strftime("%B %-d, %Y %I:%M %p") %>
+<p>Order placed on:  <%= @order.completed_time.localtime.strftime("%B %-d, %Y %I:%M %p") %>
 <p>Order Status: <%= @order.completion_status.capitalize %></p>
 <p>Total Purchase: $ <%= total  %>

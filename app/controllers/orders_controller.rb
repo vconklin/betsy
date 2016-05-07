@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
     @order = Order.find(session[:order_id])
   end
 
-  def purchase
+  def edit
   # show the form for "this" order
     @order = Order.find(session[:order_id])
   end
@@ -13,16 +13,21 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
 
-  def complete_purchase
-    order = Order.find(session[:order_id])
+  def update
+    order = Order.find(session[:order_id]) #session is persistent, the cookie has the session information.
+    order.update(order_param[:order]) # when you get a request, here is my information for right now.
     order.completed_time = Time.now
     order.completion_status = "paid"
     reduce_inventory(order)
     if order.save
-      redirect_to products_path
+      redirect_to order_path
     else
-      render :new
+      render :edit
     end
+  end
+
+  def confirmation
+    @order = Order.find(session[:order_id])
   end
 
   def reduce_inventory(order)

@@ -1,8 +1,7 @@
 class Order < ActiveRecord::Base
   has_many :order_items
   belongs_to :user
-
-  # validates :card_name, presence: true
+  
   # validates :email, presence: true
   # validates :address, presence: true
   # validates :credit_card, presence: true
