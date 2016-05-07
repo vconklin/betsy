@@ -9,8 +9,9 @@ class OrdersController < ApplicationController
     @order = Order.find(session[:order_id])
   end
 
-  # Purchasing an order makes the following changes:
-  # Clears the current cart
+  def new
+    @order = Order.new
+  end
 
   def complete_purchase
     order = Order.find(session[:order_id])
@@ -27,15 +28,12 @@ class OrdersController < ApplicationController
   def reduce_inventory(order)
   # check that there is enough inventory here
   # add check for inventory and return error if no inventory
-    if product.stock < 0
-      flash[:error] = "Out of Stock"
-      redirect_to product_path(params[:product_id])
-    end
     items = order.order_items
     items.each do |item|
     product = item.product
     quantity = item.quantity
     # if product.stock is not greater then zero, deal with error
+    # note from Val: "out of stock" is already handled by the fact that there is no Add To Cart link on the page of a product that's out of stock
       if product.stock < 0
         flash[:error] = "Out of Stock"
         redirect_to product_path(params[:product_id])
