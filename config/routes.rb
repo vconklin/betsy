@@ -1,20 +1,26 @@
 Rails.application.routes.draw do
 
   # because we need to create a session immediately upon entering the site, for guest users
+
   root 'sessions#create_order'
 
   resources :products do
     resources :reviews, :only => [:new, :create]
   end
 
-  resources :products
   resources :users, :only => [:new, :create, :show, :products]
 
   resources :sessions, :only => [:create, :destroy, :new]
 
 
+  resources :categories, only: [:create, :new]
+
+  resources :orders, only: [:new, :create, :show]
+
+
   get "/users/:id/products/" => "users#product"
   get 'reviews/index'
+
 
   get    "/login", to: "sessions#new", as: :login
   delete "/logout", to: "sessions#destroy", as: :logout

@@ -1,0 +1,4 @@
+<h1>All the Categories</h1>
+<% @categories.each do |category| %>
+  <h2><%= link_to category.product_id, category_path(category) %></h2>
+<% end %>

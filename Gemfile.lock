@@ -94,6 +94,7 @@ GEM
     pg (0.18.4)
     powerbar (1.0.17)
       hashie (>= 1.1.0)
+    pretty_time (0.2.2)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -194,6 +195,7 @@ DEPENDENCIES
   minitest
   minitest-reporters
   pg (~> 0.15)
+  pretty_time (~> 0.2.2)
   pry-rails
   rails (= 4.2.6)
   rails-erd

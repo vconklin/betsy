@@ -1,16 +1,6 @@
-<%= link_to "Go back to Product", products_path %>
-<% if @order.errors.any? %>
-  <ul class="errors">
-    <% @order.errors.each do |column, message| %>
-      <li>
-        <strong><%= column.capitalize %></strong> <%= message %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
+<%= link_to "Go back to Products", products_path %>
 
-<h1>Shipping and Billing Information</h1>
-<%= form_for @order do |f| %>
+<%= form_for(zone) do |f| %>
   <p>
     <%= f.label :card_name %>
     <%= f.text_field :card_name %>

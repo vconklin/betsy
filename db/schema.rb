@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20160506202455) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "product_id"
   end
 
   create_table "categories_products", id: false, force: :cascade do |t|
@@ -50,6 +51,7 @@ ActiveRecord::Schema.define(version: 20160506202455) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.string   "completion_status"
+    t.datetime "completed_time"
   end
 
   create_table "products", force: :cascade do |t|
