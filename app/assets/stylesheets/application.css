@@ -7,6 +7,11 @@ ul {
   list-style-type: none;
 }
 
+h1.main-title {
+  font-size: 8rem;
+  font-family: 'Sacramento', cursive;
+}
+
 .thumbnail li {
   text-align: center;
 }
