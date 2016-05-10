@@ -23,6 +23,10 @@ h1.main-title {
   font-size: 3rem;
 }
 
+.container ul {
+  display: inline;
+}
+
 .thumbnail li {
   text-align: center;
   display: block;
