@@ -1,9 +1,9 @@
 class OrdersController < ApplicationController
 # fullfillment page for the merchant/seller
-  def index
-    @orders = Order.where(id: params[:order_id]).order(name:)
-    ??????
-  end
+  # def index
+  #   @orders = Order.where(id: params[:order_id]).order(name:)
+  #   ??????
+  # end
 
   # confirmation page
   def show
