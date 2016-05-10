@@ -13,9 +13,14 @@ h1.main-title {
 }
 
 .topnav a {
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-family: 'Sacramento', cursive;
   margin: 2rem;
+}
+
+.fancylink {
+  font-family: 'Sacramento', cursive;
+  font-size: 3rem;
 }
 
 .thumbnail li {
