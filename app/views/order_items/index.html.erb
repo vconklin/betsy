@@ -28,7 +28,4 @@
 
   <p>Total: <%= total %></p>
 
-<p>Proceed to Checkout</p>
-
-<%= link_to "Back To Shop", products_path %>
-<%= link_to "Proceed To Checkout", edit_order_path(@order.id) %>
+<%= link_to "Proceed To Checkout", edit_order_path(@order.id), class: "fancylink" %>
