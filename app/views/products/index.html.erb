@@ -15,7 +15,11 @@
               <div class="caption">
                 <%= link_to product.name, product_path(product.id) %>
 
-                <span class="price">$<%= product.price %></span>
+                <span class="price">$<%= product.price/100.00 %></span>
+
+                <%= User.find(product.user_id).username %>
+
+                <p><%= "Sold Out!" if product.stock == 0 %></p>
               </div>
 
               <%= image_tag(product.image, height: '300', width: '300') %>
