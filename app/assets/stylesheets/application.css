@@ -13,11 +13,14 @@ h1.main-title {
 }
 
 .topnav a {
-  font-size: 2rem;
+  font-size: 3rem;
+  font-family: 'Sacramento', cursive;
+  margin: 2rem;
 }
 
 .thumbnail li {
   text-align: center;
+  display: block;
 }
 
 .caption a {
@@ -28,6 +31,12 @@ h1.main-title {
   color: yellow;
 }
 
+.price {
+  display: block;
+  font-size: 2rem;
+  font-family: 'Sacramento', cursive;
+  font-weight: bold;
+}
 
 
 /*
