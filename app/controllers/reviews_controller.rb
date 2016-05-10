@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
         @review.save
         redirect_to product_path(params[:product_id])
       else
-        flash[:error] = "You cannot leave a review for your own product."
+        flash[:error] = "Sorry - you cannot review your own product."
         redirect_to product_path(params[:product_id])
       end
   end
