@@ -10,7 +10,12 @@
   <% end %>
 </ul>
 
-<%= link_to "Add a Review", new_product_review_path(@product.id), class: 'fancylink' %>
+<% if @product.stock < 1 %>
+  <p>Out of Stock</p>
+<% else %>
+  <%= link_to "Add To Cart", cart_path(product_id: @product.id), method: :post, class: 'fancylink' %>
+<% end %>
+
 
 <h2>Reviews</h2>
   <% if @product.reviews == [] %>
@@ -34,8 +39,4 @@
     <% end %>
   <% end %>
 
-  <% if @product.stock < 1 %>
-    <p>Out of Stock</p>
-  <% else %>
-    <%= link_to "Add To Cart", cart_path(product_id: @product.id), method: :post, class: 'fancylink' %>
-  <% end %>
+  <%= link_to "Add a Review", new_product_review_path(@product.id), class: 'fancylink' %>
