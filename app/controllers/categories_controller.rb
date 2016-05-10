@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_action :require_login
+
   def index
     @categories = Category.all
   end
@@ -31,6 +33,12 @@ private
     params.permit(category: [:name])
   end
 
+  def require_login
+    if current_user.nil?
+      flash[:error] = "You must be logged in to view this section"
+      redirect_to login_path
+    end
+  end
 
 
 end
