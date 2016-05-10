@@ -7,17 +7,21 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_create_params[:review])
-      if(@review.save)
+      if same_user_check == false
+        @review.save
         redirect_to product_path(params[:product_id])
       else
-        render :add
+        flash[:error] = "Sorry - you cannot review your own product."
+        redirect_to product_path(params[:product_id])
       end
   end
 
   private
+    def review_create_params
+      params.permit(review: [:name, :rating, :text, :product_id])
+    end
 
-  def review_create_params
-    params.permit(review: [:name, :rating, :text, :product_id])
-  end
-
+    def same_user_check
+      @review.product.user_id == current_user.id
+    end
 end
