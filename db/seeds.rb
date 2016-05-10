@@ -28,3 +28,27 @@ product_list = [
 product_list.each do |product|
   Product.create(product)
 end
+
+user_list = [
+  { username: "beeseller1980", email: "n@com", password: "a"},
+  { username: "iamamerchant", email: "r@com", password: "a"},
+  { username: "merchantme", email: "p@com", password: "a"}
+]
+
+user_list.each do |user|
+  User.create(user)
+end
+
+category_list = [
+  {name: "edibles"},
+  {name: "novelty"},
+  {name: "electronics"},
+  {name: "health and beauty"},
+  {name: "music"},
+  {name: "bees"},
+  {name: "Beyonce"}
+]
+
+category_list.each do |category|
+  Category.create(category)
+end
