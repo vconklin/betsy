@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, only: [:new, :create]
+  before_action :require_login, except: [:new, :create]
 
   def new
     @user = User.new
@@ -23,6 +23,13 @@ class UsersController < ApplicationController
 
   def user_create_params
     params.permit(user: [:username, :email, :password, :password_confirmation])
+  end
+
+  def require_login
+    if current_user.nil?
+      flash[:error] = "You must be logged in to view this section"
+      redirect_to login_path
+    end
   end
 
 end

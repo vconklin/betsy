@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     @order = Order.create
     session[:order_id] = @order.id
     redirect_to products_path
-  end 
+  end
 
 
 
@@ -21,8 +21,10 @@ class SessionsController < ApplicationController
     end
   end
 
+  #logout
   def destroy
     session.delete(:user_id)
+    @user = nil
     redirect_to root_path
   end
 end
