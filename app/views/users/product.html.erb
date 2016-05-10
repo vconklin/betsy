@@ -2,6 +2,8 @@
 <h3> Products List </h3>
 <table class="table table-striped table-hover table-users">
 
+<%= link_to "Add New Product", new_product_path(user_id: @user.id) %>
+
 <thead>
   <tr>
     <th class= "hidden-phone">Name</th>
@@ -21,7 +23,7 @@
       <%= product.name %>
     </td>
     <td>
-      <img src="<%=product.image%>" alt= "No Image Found"/>
+      <%= image_tag (product.image) %>
     </td>
     <td>
       <%= product.description %>
@@ -36,7 +38,7 @@
       <%= product.status%>
     </td>
     <td>
-     <%= link_to "", "/products/#{product.id}/edit", class:"glyphicon glyphicon-pencil", alt: "Edit Product" %>
+     <%= link_to "", "/products/#{product.id}/edit"(user_id: product.id), class:"glyphicon glyphicon-pencil", alt: "Edit Product" %>
     </td>
   </tr>
   <%end%>

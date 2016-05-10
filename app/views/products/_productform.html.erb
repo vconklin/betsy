@@ -30,7 +30,7 @@
     <%= f.select :status, options_for_select([
       ["active"],["retired"]]),{},html_options = {:class => "listBox"}%>
 
-    <%= f.hidden_field :user_id, value: params[:user_id] || @product.user_id %>
+    <%= f.hidden_field :user_id, value: params[:user_id] || @user.id %>
 
     <%= f.submit class: "btn btn-primary" %>
 
