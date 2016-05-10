@@ -3,22 +3,28 @@
 <%= link_to "Add New Category", new_category_path if current_user %>
 
 
-<ul>
-<div class="row">
-  <div class="col-sm-6 col-md-4">
-  <% @products.each do |product| %>
-    <div class="thumbnail">
-      <li>
-        <div class="caption">
-          <%= link_to product.name, product_path(product.id) %>
+  <div class="container">
+    <ul>
+      <div class="row">
+      <% @products.each do |product| %>
 
-          <span class="price">$<%= product.price %></span>
+        <div class="col-sm-6 col-md-4">
+
+          <div class="thumbnail">
+            <li>
+              <div class="caption">
+                <%= link_to product.name, product_path(product.id) %>
+
+                <span class="price">$<%= product.price %></span>
+              </div>
+
+              <%= image_tag(product.image, height: '300', width: '300') %>
+            </li>
+          </div>
+
         </div>
+        <% end %>
+      </div>
 
-        <%= image_tag(product.image, height: '300', width: '300') %>
-      </li>
-    </div>
-  <% end %>
+    </ul>
   </div>
-</div>
-</ul>
