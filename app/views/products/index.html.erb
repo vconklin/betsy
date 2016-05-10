@@ -8,10 +8,19 @@
 
 
 <ul>
+<div class="row">
+  <div class="col-sm-6 col-md-4">
   <% @products.each do |product| %>
-  <li>
-    <%= link_to product.name, product_path(product.id) %>
-    <%= image_tag (product.image) %>
-  </li>
+    <div class="thumbnail">
+      <li>
+        <div class="caption">
+          <%= link_to product.name, product_path(product.id) %>
+        </div>
+        <br>
+        <%= image_tag(product.image, height: '300', width: '300') %>
+      </li>
+    </div>
   <% end %>
+  </div>
+</div>
 </ul>
