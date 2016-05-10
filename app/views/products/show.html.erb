@@ -3,11 +3,14 @@
   <li>Description: <%= @product.description %></li>
   <li>Price: <%= "$#{@product.price/100.00}" %></li>
   <% if @product.stock == 1 %>
-  <li><%= "Stock: Only 1 available!" %></li>
+    <li><%= "Stock: Only 1 available!" %></li>
+  <% end %>
+  <% if @product.stock == 0 %>
+    <li><%= "Stock: Sold Out!" %></li>
   <% end %>
 </ul>
 
-<%= link_to "Add a Review", new_product_review_path(@product.id) %>
+<%= link_to "Add a Review", new_product_review_path(@product.id), class: 'fancylink' %>
 
 <h2>Reviews</h2>
   <% if @product.reviews == [] %>
@@ -34,5 +37,5 @@
   <% if @product.stock < 1 %>
     <p>Out of Stock</p>
   <% else %>
-    <%= link_to "Add To Cart", cart_path(product_id: @product.id), method: :post %>
+    <%= link_to "Add To Cart", cart_path(product_id: @product.id), method: :post, class: 'fancylink' %>
   <% end %>

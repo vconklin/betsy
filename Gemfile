@@ -31,6 +31,13 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+# Testing
+
+group :test do
+  gem 'minitest'
+  gem 'minitest-reporters'
+  gem 'simplecov', require: false
+end
 
   gem 'pretty_time', '~> 0.2.2'
 

@@ -1,3 +1,49 @@
+
+body {
+  background-image: url("honeycomb-bg.jpg");
+}
+
+ul {
+  list-style-type: none;
+}
+
+h1.main-title {
+  font-size: 8rem;
+  font-family: 'Sacramento', cursive;
+}
+
+.topnav a {
+  font-size: 3.5rem;
+  font-family: 'Sacramento', cursive;
+  margin: 2rem;
+}
+
+.fancylink {
+  font-family: 'Sacramento', cursive;
+  font-size: 3rem;
+}
+
+.thumbnail li {
+  text-align: center;
+  display: block;
+}
+
+.caption a {
+  font-size: 2.5rem;
+}
+
+.caption a:hover {
+  color: yellow;
+}
+
+.price {
+  display: block;
+  font-size: 2rem;
+  font-family: 'Sacramento', cursive;
+  font-weight: bold;
+}
+
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
