@@ -12,6 +12,10 @@ h1.main-title {
   font-family: 'Sacramento', cursive;
 }
 
+.topnav a {
+  font-size: 2rem;
+}
+
 .thumbnail li {
   text-align: center;
 }
@@ -23,6 +27,7 @@ h1.main-title {
 .caption a:hover {
   color: yellow;
 }
+
 
 
 /*
