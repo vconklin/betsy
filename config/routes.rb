@@ -15,8 +15,9 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:create, :new]
 
-  resources :orders, only: [:create, :show, :edit, :update]
-  get 'orders/:id/confirmation' => 'orders#confirmation'
+  resources :orders, only: [:index, :create, :show, :edit, :update]
+
+  get 'orders/:id/confirmation' => 'orders#confirmation', as: :confirmation
 
   get "/users/:id/products/" => "users#product"
   get 'reviews/index'
