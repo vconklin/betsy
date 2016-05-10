@@ -7,10 +7,11 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_create_params[:review])
-      if(@review.save) && user_check.nil?
+      if user_check.nil?
+        @review.save
         redirect_to product_path(params[:product_id])
       else
-        render :add
+        redirect_to product_path(params[:product_id])
       end
   end
 
