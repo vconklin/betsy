@@ -17,8 +17,7 @@ class UsersController < ApplicationController
   def product
     @user = User.find(params[:id])
     @products_by_user = Product.where(user_id: @user.id)
-
-    if @products_by_user.present? && session[:user_id] == @products_by_user[0].user_id
+    if @products_by_user.present? && session[:user_id] != @products_by_user[0].user_id
         flash[:notice] = "You don't have access to that product list!"
         redirect_to root_path
         return
