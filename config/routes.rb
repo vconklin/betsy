@@ -20,7 +20,6 @@ Rails.application.routes.draw do
   get 'orders/:id/confirmation' => 'orders#confirmation', as: :confirmation
 
   get "/users/:id/products/" => "users#product"
-  get 'reviews/index'
 
 
   get    "/login", to: "sessions#new", as: :login

@@ -8,8 +8,9 @@ beyonce_air:
   status: "active"
 
 passing_product:
-  name: "Beyonce Poster"
+  id: 1
+  name: "Bee-Venom"
   price: 100
-  user: user
-  stock: 10
-  status: 1
+  user_id: 1
+  stock: 5
+  status: "active"

@@ -1,5 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+# model fixtures
 passing_review:
   rating: 5
   product: passing_product
@@ -19,3 +20,11 @@ rating_is_8:
 rating_is_b:
   rating: "B"
   product: passing_product
+
+#controller fixtures
+annas_review:
+  id: 1
+  rating: 5
+  name: "Anna"
+  text: "So great"
+  product_id: 1

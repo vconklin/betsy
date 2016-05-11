@@ -6,7 +6,6 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @guest_order = Order.find(session[:order_id])
     @review = Review.new(review_create_params[:review])
       if current_user == nil
         @review.save
