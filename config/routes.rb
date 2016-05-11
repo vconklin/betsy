@@ -19,6 +19,11 @@ Rails.application.routes.draw do
 
   get 'orders/:id/confirmation' => 'orders#confirmation', as: :confirmation
 
+
+  get 'users/:id/orders/' => 'orders#index'
+  # shipping button
+  patch 'users/:id/orders' => 'users#update'
+
   get "/users/:id/products/" => "users#product"
   get 'reviews/index'
 

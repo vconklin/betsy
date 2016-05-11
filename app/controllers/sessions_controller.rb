@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   # guests
   def create_order
     @order = Order.create
+    @order.completion_status = "pending"
     session[:order_id] = @order.id
     redirect_to products_path
   end

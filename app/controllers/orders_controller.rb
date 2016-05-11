@@ -1,9 +1,10 @@
 class OrdersController < ApplicationController
-# fullfillment page for the merchant/seller
-  # def index
-  #   @orders = Order.where(id: params[:order_id]).order(name:)
-  #   ??????
-  # end
+
+  # fullfillment page for the merchant/seller
+    def index
+      # @orders = Order.where(user_id: params[:id]).select{ |order| order.status == 'paid' }
+      @user = User.find(params[:id])
+    end
 
   # confirmation page
   def show
