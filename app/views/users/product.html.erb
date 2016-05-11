@@ -3,6 +3,7 @@
 
 <%= link_to "Add New Product", new_product_path(user_id: @user.id), class: "fancylink" %>
 
+<% if @products_by_user.present? %>
 <thead>
   <tr>
     <th class= "hidden-phone">Name</th>
@@ -44,3 +45,8 @@
 </tbody>
 
 </table>
+
+<% else %>
+<br><br>
+<%= "No products yet. Why not add some?" %>
+<% end %>
