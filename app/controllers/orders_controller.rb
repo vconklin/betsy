@@ -1,8 +1,11 @@
 class OrdersController < ApplicationController
 
   # fullfillment page for the merchant/seller
+  # .select{ |order| order.status == 'paid' }
     def index
-      # @orders = Order.where(user_id: params[:id]).select{ |order| order.status == 'paid' }
+      # this is being set to status on the index page. 
+      @status = {}
+      @orders = Order.where(user_id: params[:id])
       @user = User.find(params[:id])
     end
 

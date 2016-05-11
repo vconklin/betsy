@@ -1,13 +1,28 @@
 <h1>Fullfillment Order</h1>
-
 <table>
+  <thead>
+    <tr>
+      <th>Total Revenue</th>
+      <th>Revenue by Status</th>
+    </tr>
+  </thead>
+  <tr>
+    <td><%= @user.total_revenue %></td>
+    <td><%= @user.total_revenue_by_status("pending") %></td>
+    <td><%= @user.count_of_orders("paid") %></td>
+  </tr>
 
-<%= @user.total_revenue %>
+<%= form_for @orders do |f| %>
+<%= f.label "Completion Status" %>
+<%= f.select :completion_status, options_for_select([
+  ["pending"],["paid"],["complete"],["cancelled"]]),{},html_options = {:class => "listBox"}%>
+  <%= f.submit "Get Orders" %>
+<% end %>
 
 
-button = that changes completion_status == complete
+<!-- button = that changes completion_status == complete
 an :method :update
 route patch orders/
 
 if order_item.shipping
-  completion_status = "complete"
+  completion_status = "complete" -->
