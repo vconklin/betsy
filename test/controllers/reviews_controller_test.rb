@@ -4,6 +4,7 @@ class ReviewsControllerTest < ActionController::TestCase
 
   def setup
     @product = products(:passing_product)
+    @review = reviews(:annas_review)
   end
 
   test "should get new" do
@@ -12,7 +13,18 @@ class ReviewsControllerTest < ActionController::TestCase
   end
 
   test "should post create" do
-    post :create, :review => { :name => "Anna", :rating => "5", :text => "So great.", :product_id => @product.id }
+    assert_difference('Review.count') do
+      post :create, product_id: @product.id, review: { id: @review.id, rating: @review.rating, name: @review.name, text: @review.text, product_id: @review.product_id } # I don't understand why I can't just use @review here..
+    end
+    assert_redirected_to product_path(products(:passing_product))
   end
 
 end
+
+
+
+
+
+# product_id: @review.id
+
+# review: { id: @review.id, rating: @review.rating, name: @review.name, text: @review.text, product_id: @review.product_id }

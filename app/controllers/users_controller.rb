@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login, except: [:new, :create]
+  before_action :require_login, only: [:product]
 
   def new
     @new_user = User.new
@@ -12,6 +12,12 @@ class UsersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    # I still don't quite understand why if this instance variable is called @user, it becomes current_user in the application controller. Same with new and create methods.
+    @merchant = User.find(params[:id])
+    @products = Product.where(status: "active", user_id: params[:id])
   end
 
   def product
