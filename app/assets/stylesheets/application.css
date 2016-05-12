@@ -1,6 +1,7 @@
 
 body {
   background-image: url("honeycomb-bg.jpg");
+  font-size: 16px;
 }
 
 ul {
@@ -38,6 +39,11 @@ h1.main-title {
 
 .caption a:hover {
   color: yellow;
+}
+
+a.merchantname {
+  /* why is this making it so small? shouldn't it be 16px like the body font-size? */
+  font-size: 1rem;
 }
 
 .price {
