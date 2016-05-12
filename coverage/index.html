@@ -14,7 +14,7 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2016-05-11T14:49:27-07:00">2016-05-11T14:49:27-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2016-05-11T15:53:35-07:00">2016-05-11T15:53:35-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,7 +25,7 @@
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.69
+         0.74
        </span>
     </span> hits/line)
   </h2>
@@ -57,7 +57,7 @@
         <td>5</td>
         <td>5</td>
         <td>0</td>
-        <td>1.8</td>
+        <td>2.0</td>
       </tr>
       
       <tr>
@@ -77,7 +77,7 @@
         <td>19</td>
         <td>13</td>
         <td>6</td>
-        <td>0.7</td>
+        <td>0.9</td>
       </tr>
       
       <tr>
@@ -233,7 +233,7 @@
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.68
+         0.78
        </span>
     </span> hits/line)
   </h2>
@@ -265,7 +265,7 @@
         <td>5</td>
         <td>5</td>
         <td>0</td>
-        <td>1.8</td>
+        <td>2.0</td>
       </tr>
       
       <tr>
@@ -285,7 +285,7 @@
         <td>19</td>
         <td>13</td>
         <td>6</td>
-        <td>0.7</td>
+        <td>0.9</td>
       </tr>
       
     </tbody>
@@ -647,8 +647,8 @@
           <code class="ruby">  def current_user</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="8">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="6" data-linenumber="8">
+          <span class="hits">6</span>
           
           <code class="ruby">    @user ||= User.find_by(id: session[:user_id])</code>
         </li>
@@ -1055,26 +1055,26 @@
           <code class="ruby">  def create</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="9">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="9">
+          <span class="hits">2</span>
           
           <code class="ruby">    @review = Review.new(review_create_params[:review])</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="10">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="10">
+          <span class="hits">2</span>
           
           <code class="ruby">      if current_user == nil</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="11">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="11">
+          <span class="hits">2</span>
           
           <code class="ruby">        @review.save</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="12">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="12">
+          <span class="hits">2</span>
           
           <code class="ruby">        redirect_to product_path(params[:product_id])</code>
         </li>
@@ -1145,8 +1145,8 @@
           <code class="ruby">    def review_create_params</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="24">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="24">
+          <span class="hits">2</span>
           
           <code class="ruby">      params.permit(review: [:name, :rating, :text, :product_id])</code>
         </li>

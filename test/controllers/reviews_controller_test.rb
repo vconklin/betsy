@@ -14,12 +14,16 @@ class ReviewsControllerTest < ActionController::TestCase
 
   test "should post create" do
     assert_difference('Review.count') do
-      post :create, product_id: @product.id, review: { id: @review.id, rating: @review.rating, name: @review.name, text: @review.text, product_id: @review.product_id }
+      post :create, product_id: @product.id, review: { id: @review.id, rating: @review.rating, name: @review.name, text: @review.text, product_id: @review.product_id } # I don't understand why I can't just use @review here..
     end
     assert_redirected_to product_path(products(:passing_product))
   end
 
 end
+
+
+
+
 
 # product_id: @review.id
 
