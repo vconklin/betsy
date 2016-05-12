@@ -77,7 +77,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  config.serve.static_assets = true
+  config.serve_static_assets = true
   config.assets.initialize_on_precompile = false
-  config.assets.compile = true
 end
