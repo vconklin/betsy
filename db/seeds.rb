@@ -40,15 +40,43 @@ user_list.each do |user|
 end
 
 category_list = [
+  {name: "bees"},
+  {name: "Beyonce"},
   {name: "edibles"},
+  {name: "collectibles"},
   {name: "novelty"},
   {name: "electronics"},
   {name: "health and beauty"},
+  {name: "house and garden"},
   {name: "music"},
-  {name: "bees"},
-  {name: "Beyonce"}
+  {name: "books"}
 ]
 
 category_list.each do |category|
   Category.create(category)
 end
+
+Product.find(1).categories << Category.find([2,4])
+Product.find(2).categories << Category.find([2,4])
+Product.find(3).categories << Category.find([1,8])
+Product.find(4).categories << Category.find([1,3])
+Product.find(5).categories << Category.find([1,5])
+Product.find(6).categories << Category.find([2,7])
+Product.find(7).categories << Category.find([2,10])
+Product.find(8).categories << Category.find([2,3])
+Product.find(9).categories << Category.find(2)
+Product.find(10).categories << Category.find([2,7])
+Product.find(11).categories << Category.find(2)
+Product.find(12).categories << Category.find(1)
+Product.find(13).categories << Category.find(1)
+Product.find(14).categories << Category.find(2)
+Product.find(15).categories << Category.find([1,5])
+Product.find(16).categories << Category.find([1,3])
+Product.find(17).categories << Category.find([1,8])
+Product.find(18).categories << Category.find([1,5])
+Product.find(19).categories << Category.find([1,7])
+Product.find(20).categories << Category.find([1,7])
+Product.find(21).categories << Category.find([2,7])
+Product.find(22).categories << Category.find([2,5])
+Product.find(23).categories << Category.find([2,3,9,4])
+Product.find(24).categories << Category.find([2,5])
