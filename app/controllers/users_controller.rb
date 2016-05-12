@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login, except: [:new, :create]
+  before_action :require_login, only: [:product]
 
   def new
     @new_user = User.new
@@ -12,6 +12,10 @@ class UsersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    
   end
 
   def product
