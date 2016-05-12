@@ -15,7 +15,7 @@ skip_before_action :require_login, except: [:index]
       @products = Product.where(status: "active")
     end
     @user ||= User.find_by(id: session[:user_id])
-    @categories = Category.all.map{|c| [ c.name, c.id ] }
+    @categories = Category.all.order(:name).map{|c| [ c.name, c.id ] }
   end
 
   def new
