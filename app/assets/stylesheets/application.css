@@ -1,7 +1,11 @@
+html {
+  /* because bootstrap apparently messes with this */
+  font-size: 16px;
+}
+
 
 body {
   background-image: url("honeycomb-bg.jpg");
-  font-size: 16px;
 }
 
 ul {
@@ -9,19 +13,19 @@ ul {
 }
 
 h1.main-title {
-  font-size: 8rem;
+  font-size: 6rem;
   font-family: 'Sacramento', cursive;
 }
 
 .topnav a {
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   font-family: 'Sacramento', cursive;
   margin: 2rem;
 }
 
 .fancylink {
   font-family: 'Sacramento', cursive;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .container ul {
@@ -34,24 +38,24 @@ h1.main-title {
 }
 
 .caption a {
-  font-size: 2.25rem;
+  font-size: 1.5rem;
 }
 
 .caption a:hover {
   color: yellow;
 }
 
-a.merchantname {
-  /* why is this making it so small? shouldn't it be 16px like the body font-size? */
-  font-size: 1rem;
-}
-
 .price {
   display: block;
-  font-size: 2rem;
+  font-size: 1.25rem;
   font-family: 'Sacramento', cursive;
   font-weight: bold;
 }
+
+a.merchantname {
+  font-size: 1rem;
+}
+
 
 
 /*
