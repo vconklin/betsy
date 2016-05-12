@@ -1,4 +1,5 @@
 <h1>Confirmation</h1>
+<%= @order.completion_status %>
 <!-- this is where the user can click yes or no and this can make the order complete -->
 <!-- or if the user decides they no longer want this order they can cancel -->
 <p> <%= link_to @order.id, order_path(@order.id) %></p>

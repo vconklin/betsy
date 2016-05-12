@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:create, :new]
 
-  resources :orders, only: [:index, :create, :show, :edit, :update]
+  resources :orders, only: [:create, :show, :edit, :update]
 
   get 'orders/:id/confirmation' => 'orders#confirmation', as: :confirmation
 
@@ -41,6 +41,8 @@ Rails.application.routes.draw do
   delete '/cart' => 'order_items#destroy'
 
   patch '/cart/:id' => 'order_items#update', as: 'update_cart'
+
+  # map.search "search", :orders => index
 
 
 

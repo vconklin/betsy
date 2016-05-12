@@ -1,8 +1,14 @@
 class SessionsController < ApplicationController
   # guests
   def create_order
+    if params[:order] != nil
+      @cancelorder = Order.find(params[:order])
+      @cancelorder.update(completion_status: "cancelled")
+      @cancelorder.save
+    end
     @order = Order.create
-    @order.completion_status = "pending"
+    @order.update(completion_status: "pending")
+    @order.save
     session[:order_id] = @order.id
     redirect_to products_path
   end

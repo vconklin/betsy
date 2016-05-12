@@ -6,24 +6,18 @@
 <p>Address: <%= @order.address %></p>
 <p>Credit card: <%= @order.to_s.slice(-4..-1).to_i %></p>
 
+<%= @order.completion_status %>
 
 <h3>Order Details</h3>
 <% @order.order_items.each do |order_item| %>
-<p>Name: <%=order_item.product.name %>
-<p>Quantity Ordered: <%= order_item.quantity %></p>
+  <p>Name: <%=order_item.product.name %>
+    <p>Quantity Ordered: <%= order_item.quantity %></p>
 <% end %>
 
-<% if @order == "yes" %>
-<% order.completion_status = "paid" %>
-<% else @order == "no" %>
-<% @order.completion_status = "cancelled" %>
+<%= button_to "Confirm Purchase", confirmation_path, method: :get,
+  :onclick => "return confirm('Are you sure you want to purchase?')" %> <br/> <br/>
 
-  <%= form_for @order do |f| %>
-  <%= f.select :completion_status, options_for_select([
-    ["yes"],["no"]]),{},html_options = {:class => "listBox"} %>
-  <%= button_to "Confirm Purchase", confirmation_path, method: :get %><br/>
-  <% end %>
-  <% end %>
+<%= button_to "Edit Purchase", cart_path, method: :get %><br/><br/>
 
-
-<%= button_to "Edit Purchase", cart_path, method: :get %>
+<%= button_to "Cancel", root_path, method: :get, :order => params[:id], :onchange => "this.form.submit()",
+:onclick => "return confirm('Are you sure you want to cancel?')" %> <br/> <br/>
