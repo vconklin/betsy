@@ -22,7 +22,7 @@ skip_before_action :require_login, except: [:index]
     @product = Product.new(product_access_params[:product])
     #any validation?
     if @product.save
-      redirect_to "/vendors/#{@product.vendor_id}/products"
+      redirect_to "/users/#{current_user.id}/products"
     else
       render :new
     end
@@ -58,6 +58,6 @@ skip_before_action :require_login, except: [:index]
   private
 
   def product_access_params
-    params.permit(product: [:name, :description, :stock, :price, :status, :image])
+    params.permit(product: [:name, :description, :stock, :price, :status, :image, :user_id])
   end
 end
