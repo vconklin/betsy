@@ -17,7 +17,8 @@
 
                 <span class="price">$<%= product.price/100.00 %></span>
 
-                <%= User.find(product.user_id).username %>
+                <% merchant = User.find(product.user_id) %>
+                <%= link_to merchant.username, user_path(merchant.id) %>
 
                 <p><%= product.stock == 0 ? "Sold Out!" : "#{product.stock} Available" %></p>
               </div>
