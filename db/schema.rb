@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 20160512164155) do
     t.string   "exp_date"
     t.integer  "cvv"
     t.string   "zip"
-    t.integer  "user_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.string   "completion_status"

@@ -1,9 +1,19 @@
 class OrdersController < ApplicationController
-# fullfillment page for the merchant/seller
-  # def index
-  #   @orders = Order.where(id: params[:order_id]).order(name:)
-  #   ??????
-  # end
+
+  # fullfillment page for the merchant/seller
+  # .select{ |order| order.status == 'paid' }
+    def index
+      #filter completion status if the user asks for it
+      if params[:completion_status] != nil
+        @orders = Order.where(completion_status: params[:completion_status])
+        @products = Product.where(user_id: params[:id])
+      else
+        @orders = Order.all
+        @products = Product.where(user_id: params[:id])
+      end
+      @user = User.find(params[:id])
+      @status = ["pending", "paid", "completed", "cancelled"]
+    end
 
   # confirmation page
   def show
@@ -22,8 +32,6 @@ class OrdersController < ApplicationController
   def update
     order = Order.find(session[:order_id]) #session is persistent, the cookie has the session information.
     order.update(order_param[:order]) # when you get a request, here is my information for right now.
-    order.completed_time = Time.now
-    order.completion_status = "paid"
     reduce_inventory(order)
     if order.save
       redirect_to order_path
@@ -34,6 +42,8 @@ class OrdersController < ApplicationController
 
   def confirmation
     @order = Order.find(session[:order_id])
+    @order.completed_time = Time.now
+    @order.completion_status = "paid"
   end
 
   def reduce_inventory(order)

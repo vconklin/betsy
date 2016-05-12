@@ -6,4 +6,18 @@
 <p>Address: <%= @order.address %></p>
 <p>Credit card: <%= @order.to_s.slice(-4..-1).to_i %></p>
 
-<%= link_to "Confirmation", confirmation_path %>
+<%= @order.completion_status %>
+
+<h3>Order Details</h3>
+<% @order.order_items.each do |order_item| %>
+  <p>Name: <%=order_item.product.name %>
+    <p>Quantity Ordered: <%= order_item.quantity %></p>
+<% end %>
+
+<%= button_to "Confirm Purchase", confirmation_path, method: :get,
+  :onclick => "return confirm('Are you sure you want to purchase?')" %> <br/> <br/>
+
+<%= button_to "Edit Purchase", cart_path, method: :get %><br/><br/>
+
+<%= button_to "Cancel", root_path, method: :get, :order => params[:id], :onchange => "this.form.submit()",
+:onclick => "return confirm('Are you sure you want to cancel?')" %> <br/> <br/>

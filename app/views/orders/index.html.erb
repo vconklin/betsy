@@ -1,1 +1,45 @@
 <h1>Fullfillment Order</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Revenue Total</th>
+      <th>Number of Orders</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <% @status.each do |status| %>
+  <tr>
+    <td><%= number_to_currency(@user.total_revenue_by_status(status)/100.00) %></td>
+    <td><%= @user.count_of_orders(status) %></td>
+    <td><%= status.capitalize %></td>
+  </tr>
+  <% end %>
+  <p><%= number_to_currency(@user.total_revenue/100.00) %></p>
+
+<%= form_tag("/users/#{params[:id]}/orders", method: :get) do %>
+<%= label_tag("Completion Status") %>
+<%= select_tag("completion_status", options_for_select([
+  ["pending"],["paid"],["complete"],["cancelled"]], :selected => params[:completion_status]), :onchange => "this.form.submit()") %>
+<% end %>
+</table>
+
+<table>
+<thead>
+  <tr>
+    <th>Order Id</th>
+    <th>Quantity</th>
+    <th>Name</th>
+    <th>SubTotal</th>
+    <th>Status</th>
+    <th>Shipped?</th>
+  </tr>
+</thead>
+
+
+
+
+
+
+if order_item.shipping
+  completion_status = "complete"

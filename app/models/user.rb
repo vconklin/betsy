@@ -17,7 +17,9 @@ class User < ActiveRecord::Base
   def total_revenue
     total_rev = 0
     order_items.each do |order_item|
-      total_rev += order_item.quantity * product.price
+      products.each do |product|
+        total_rev += order_item.quantity * product.price
+      end
     end
     total_rev
   end
@@ -26,25 +28,16 @@ class User < ActiveRecord::Base
     total_rev = 0
     order_items.each do |order_item|
       if order_item.order.completion_status == status
-        total_rev += order_item.quantity * product.price
+        total_rev += order_item.quantity * order_item.product.price
       end
     end
     total_rev
   end
 
   def count_of_orders(status)
-
-    order_count = 0
-    # map returns a new array
-    orders = order_items.map do |order_item|
-      order_item.order
-    end
-    orders.uniq
-
-# need to get the count of the orders by status
-      if order_item.order.completion_status == status
-        order_count += 1
-      end
+    collection_of_orders = Order.where(completion_status: status).count
+    collection_of_orders
   end
+
 
 end
