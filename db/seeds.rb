@@ -7,7 +7,7 @@ product_list = [
   { name: "Beyonce Heat", price: rand(1000..99999), user_id: rand(1..3), stock: rand(1..10), description: " ", status: "active", image: "beyonce-heat.jpg"},
   { name: "Becoming Beyonce Book", price: rand(1000..99999), user_id: rand(1..3), stock: rand(1..10), description: " ", status: "active", image: "becoming-beyonce.jpg"},
   { name: "Lemonade Drink", price: rand(1000..99999), user_id: rand(1..3), stock: rand(1..10), description: " ", status: "active", image: "lemonade.jpg"},
-  { name: "Beyonce Blow Up Doll", price: rand(1000..99999), user_id: rand(1..3), stock: rand(1..10), description: " ", status: "active"},
+  { name: "Beyonce Blow Up Doll", price: rand(1000..99999), user_id: rand(1..3), stock: rand(1..10), description: " ", image: "", status: "active"},
   { name: "Beach Wave Extensions", price: rand(1000..99999), user_id: rand(1..3), stock: rand(1..10), description: " ", status: "active", image: "beachwave-extension.jpg"},
   { name: "Bey-Hive", price: rand(1000..99999), user_id: rand(1..3), stock: rand(1..10), description: " ", status: "active", image: "bey-hive.jpg"},
   { name: "Bee-Venom", price: rand(1000..99999), user_id: rand(1..3), stock: rand(1..10), description: " ", status: "active", image: "beevenom.jpg"},

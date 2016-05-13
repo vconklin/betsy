@@ -33,7 +33,11 @@
                 <p><%= product.stock == 0 ? "Sold Out!" : "#{product.stock} Available" %></p>
               </div>
 
-              <%= image_tag(product.image, height: '300', width: '300') %>
+              <% if product.image == "" %>
+                <%= image_tag("comingsoon.png", height: '300', width: '300') %>
+              <% else %>
+                <%= image_tag(product.image, height: '300', width: '300') %>
+              <% end %>
             </li>
           </div>
 
