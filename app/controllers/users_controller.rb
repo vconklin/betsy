@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find_by(id: session[:user_id])
     @merchant = User.find(params[:id])
     @products = Product.where(status: "active", user_id: params[:id])
   end
