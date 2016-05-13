@@ -4,7 +4,7 @@
   <div class="errors">
     <h2> ERROR!!!! </h2>
     <ul>
-      <% @user.errors.each do |attribute, message| %>
+      <% @new_user.errors.each do |attribute, message| %>
         <li><strong><%= attribute %></strong>: <%= message %></li>
       <% end %>
     </ul>
