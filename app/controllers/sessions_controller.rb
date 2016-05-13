@@ -1,11 +1,6 @@
 class SessionsController < ApplicationController
   # guests
   def create_order
-    if params[:order] != nil
-      @cancelorder = Order.find(params[:order])
-      @cancelorder.update(completion_status: "cancelled")
-      @cancelorder.save
-    end
     @order = Order.create
     @order.update(completion_status: "pending")
     @order.save

@@ -18,6 +18,3 @@
   :onclick => "return confirm('Are you sure you want to purchase?')" %> <br/> <br/>
 
 <%= button_to "Edit Purchase", cart_path, method: :get %><br/><br/>
-
-<%= button_to "Cancel", root_path, method: :get, :order => params[:id], :onchange => "this.form.submit()",
-:onclick => "return confirm('Are you sure you want to cancel?')" %> <br/> <br/>

@@ -15,13 +15,6 @@
     <td><%= status.capitalize %></td>
   </tr>
   <% end %>
-  <p><%= number_to_currency(@user.total_revenue/100.00) %></p>
-
-<%= form_tag("/users/#{params[:id]}/orders", method: :get) do %>
-<%= label_tag("Completion Status") %>
-<%= select_tag("completion_status", options_for_select([
-  ["pending"],["paid"],["complete"],["cancelled"]], :selected => params[:completion_status]), :onchange => "this.form.submit()") %>
-<% end %>
 </table>
 
 <table>
@@ -30,16 +23,35 @@
     <th>Order Id</th>
     <th>Quantity</th>
     <th>Name</th>
-    <th>SubTotal</th>
     <th>Status</th>
+    <th>Date</th>
+    <th>Subtotal</th>
     <th>Shipped?</th>
   </tr>
 </thead>
 
+<%= form_tag("/users/#{params[:id]}/orders", method: :get) do %>
+<%= label_tag("Completion Status") %>
+<%= select_tag("completion_status", options_for_select([
+["paid"],["pending"],["complete"],["cancelled"]], :selected => params[:completion_status]), :onchange => "this.form.submit()") %>
+<% end %>
+
+<% @order_items.each do |order_item| %>
+<tr>
+  <td><%= order_item.order.id %></td>
+  <td><%= order_item.quantity %></td>
+  <td><%=link_to order_item.product.name, product_path(order_item.product.id) %></td>
+  <td><%= order_item.order.completion_status %></td>
+  <td><%= order_item.order.completed_time.strftime("%B %d, %Y") if order_item.order.completed_time %></td>
+  <td><%= number_to_currency(order_item.quantity * order_item.product.price) %>
+  <td><% if order_item.order.completion_status == "complete" %>
+        <%= "Yes" %>
+      <% else %>
+        <%= "No" %>
+      <% end %></td>
+      <td><%= button_to "Ship Item", {:order => order_item.order.id, :controller => :orders, :action => "complete" }, method: :patch, :onchange => "this.form.submit()" %></td>
+</tr>
+<% end %>
 
 
-
-
-
-if order_item.shipping
-  completion_status = "complete"
+<p><strong>Total Revenue: </strong><%= number_to_currency(@user.total_revenue/100.00) %></p>
