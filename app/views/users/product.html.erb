@@ -10,6 +10,7 @@
     <th>Image</th>
     <th>Description</th>
     <th>Price</th>
+    <th>Categories</th>
     <th>Stock</th>
     <th>Status</th>
     <th>Edit</th>
@@ -23,13 +24,18 @@
       <%= product.name %>
     </td>
     <td>
-      <%= image_tag (product.image) %>
+      <%= image_tag(product.image, height: 100, width: 100) %>
     </td>
     <td>
       <%= product.description %>
     </td>
     <td>
       <%= "$#{product.price/100.00}" %>
+    </td>
+    <td>
+      <% product.categories.each do |category| %>
+        <%= category.name %>,
+      <% end %>
     </td>
     <td>
       <%= product.stock%>

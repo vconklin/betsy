@@ -3,6 +3,11 @@ class ReviewsController < ApplicationController
   def new
     @product = Product.find(params[:product_id])
     @review = Review.new
+    if current_user.present?
+      @username = current_user.username
+    else
+      @username = nil
+    end
   end
 
   def create

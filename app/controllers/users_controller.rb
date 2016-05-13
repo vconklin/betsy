@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    # I still don't quite understand why if this instance variable is called @user, it becomes current_user in the application controller. Same with new and create methods.
+    @user = User.find_by(id: session[:user_id])
     @merchant = User.find(params[:id])
     @products = Product.where(status: "active", user_id: params[:id])
   end
