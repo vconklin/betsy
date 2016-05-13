@@ -22,7 +22,12 @@ class OrdersController < ApplicationController
 
   # confirmation page
   def show
-    @order = Order.find(session[:order_id])
+    if params[:view] == 'merchant'
+      @order = Order.find(params[:id])
+      render :usershow
+    else
+      @order = Order.find(session[:order_id])
+    end
   end
 
   def edit
