@@ -42,6 +42,7 @@ skip_before_action :require_login, except: [:index]
 
   def edit
     @product = Product.find(params[:id])
+    @categories = Category.all.order(:name).map{|category| category.name}
   end
 
   def update
