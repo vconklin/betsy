@@ -1,6 +1,7 @@
-
+<nav class="bottomnav">
 <%= link_to "My Products", "/users/#{@user.id}/products", method: :get if current_user %>
 <%= link_to "Add New Category", new_category_path if current_user %>
+</nav>
 
 <h2><%= @merchant.username %>'s Store</h2>
 
