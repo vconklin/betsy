@@ -23,6 +23,9 @@
     <%= f.label "Paste Image URL" %>
     <%= f.text_field :image, placeholder: "image URL" %>
 
+    <%= f.label "Categories" %>
+    <%= f.select :categories, options_for_select(@categories, params[:categories]), {}, {multiple: true} %>
+
     <%= f.label "Stock" %>
     <%= f.text_field :stock, placeholder: "Stock" %>
 
