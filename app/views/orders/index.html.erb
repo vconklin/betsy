@@ -1,6 +1,6 @@
 <h1>Fullfillment Order</h1>
 
-<table>
+<table class="table table-striped table-hover table-users">
   <thead>
     <tr>
       <th>Revenue Total</th>
@@ -17,7 +17,7 @@
   <% end %>
 </table>
 
-<table>
+<table class="table table-striped table-hover table-users">
 <thead>
   <tr>
     <th>Order Id</th>
@@ -26,7 +26,8 @@
     <th>Status</th>
     <th>Date</th>
     <th>Subtotal</th>
-    <th>Shipped?</th>
+    <th>Shipping Status</th>
+    <th>Mark Shipped</th>
   </tr>
 </thead>
 
@@ -49,9 +50,13 @@
       <% else %>
         <%= "No" %>
       <% end %></td>
-      <td><%= button_to "Ship Item", {:order => order_item.order.id, :controller => :orders, :action => "complete" }, method: :patch, :onchange => "this.form.submit()" %></td>
+      <td><% if order_item.order.completion_status == "paid" %>
+            <%= link_to "", {:order => order_item.order.id, :controller => :orders, :action => "complete" }, method: :patch, class: "glyphicon glyphicon-ok", :onchange => "this.form.submit()" %>
+          <% end %>
+      </td>
 </tr>
 <% end %>
+</table>
 
 
 <p><strong>Total Revenue: </strong><%= number_to_currency(@user.total_revenue/100.00) %></p>
