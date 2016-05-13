@@ -8,6 +8,7 @@
   </ul>
 <% end %>
 <ul>
+<p>Current Categories:</p>
 <% @categories.each do |category| %>
 <li><%= category.name %></li>
 <% end %>
@@ -15,11 +16,9 @@
 
 <%= form_for @category do |f| %>
 <!-- use the instance to give form_for all the information they need to know about tasks! -->
-  <%= field_set_tag 'Product Information', :html => {:class => "form-group"}  do %>
-    <%= f.label "Name" %>
+  <%= field_set_tag 'Add New Category', :html => {:class => "form-group"}  do %>
     <%= f.text_field :name, placeholder: "Name" %>
-
-    <%= f.submit class: "btn btn-primary" %>
+    <%= f.submit %>
 
   <% end %>
 <% end %>
