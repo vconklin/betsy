@@ -9,9 +9,14 @@ class Product < ActiveRecord::Base
 
   def update_categories(array)
     # take the array that is passed in, deals with the inevitable weird blank value, and turn them into integers
+    # self.categories.each do |category|
+    #
+    # end
+
+
+
     categories_array = array.reject!(&:blank?).map {|element| element.to_i}
     # find the categories that matches those category_ids (the ones in the array) and shovel into product
-    self.categories << Category.find(categories_array)
-    # save product
+    self.categories = Category.find(categories_array)
   end
 end
