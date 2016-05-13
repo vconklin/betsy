@@ -7,5 +7,11 @@ class Product < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :price, presence: true, numericality: {only_integer: true, greater_than: 0}
 
-
+  def update_categories(array)
+    # take the array that is passed in, deals with the inevitable weird blank value, and turn them into integers
+    categories_array = array.reject!(&:blank?).map {|element| element.to_i}
+    # find the categories that matches those category_ids (the ones in the array) and shovel into product
+    self.categories << Category.find(categories_array)
+    # save product
+  end
 end
