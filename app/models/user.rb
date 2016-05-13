@@ -35,8 +35,13 @@ class User < ActiveRecord::Base
   end
 
   def count_of_orders(status)
-    collection_of_orders = Order.where(completion_status: status).count
-    collection_of_orders
+    Product.where(user_id: self.id).flat_map do |product|
+      product.order_items.map do |order_item|
+        order_item.order
+      end.select do |order|
+        order.completion_status == status
+      end
+    end.uniq.count
   end
 
 

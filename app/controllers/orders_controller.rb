@@ -3,16 +3,21 @@ class OrdersController < ApplicationController
   # fullfillment page for the merchant/seller
   # .select{ |order| order.status == 'paid' }
     def index
+      p params
       #filter completion status if the user asks for it
       if params[:completion_status] != nil
         @orders = Order.where(completion_status: params[:completion_status])
+        p @orders
         @products = Product.where(user_id: params[:id])
+        p @products
+        @order_items = OrderItem.where(product: @products, order: @orders)
+          p @order_items
       else
-        @orders = Order.all
         @products = Product.where(user_id: params[:id])
+        @order_items = OrderItem.where(product: @products)
       end
       @user = User.find(params[:id])
-      @status = ["pending", "paid", "completed", "cancelled"]
+      @status = ["pending", "paid", "complete", "cancelled"]
     end
 
   # confirmation page
@@ -57,8 +62,22 @@ class OrdersController < ApplicationController
     end
   end
 
+  def complete
+    @order = Order.find(params[:order])
+    @order.update(completion_status: "complete")
+    @order.save
+    redirect_to "/users/#{session[:user_id]}/orders"
+  end
+
   def find_order
     @order = Order.find(session[:order_id])
+  end
+
+  def cancel
+      @cancelledorder = Order.find(params[:id])
+      @cancelledorder.update(completion_status: "cancelled")
+      @cancelledorder.save
+    redirect_to root_path
   end
 
 private
