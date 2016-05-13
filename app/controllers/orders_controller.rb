@@ -18,6 +18,12 @@ class OrdersController < ApplicationController
       end
       @user = User.find(params[:id])
       @status = ["pending", "paid", "complete", "cancelled"]
+
+      unless session[:user_id].to_s == params[:id]
+        flash[:notice] = "You don't have access to that order fulfillment page!"
+        redirect_to products_path
+        return
+      end
     end
 
   # confirmation page
