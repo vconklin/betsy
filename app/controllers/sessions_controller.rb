@@ -8,9 +8,6 @@ class SessionsController < ApplicationController
     redirect_to products_path
   end
 
-
-
-
   # logged in users
   def create
     # this is for creating a new session after login
