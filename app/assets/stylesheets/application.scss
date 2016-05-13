@@ -15,12 +15,22 @@ ul {
 h1.main-title {
   font-size: 6rem;
   font-family: 'Sacramento', cursive;
+  text-align: center;
+}
+
+.topnav {
+  text-align: center;
 }
 
 .topnav a {
   font-size: 2.5rem;
   font-family: 'Sacramento', cursive;
   margin: 2rem;
+}
+
+.greeting {
+  font-size: 1rem;
+  text-align: center;
 }
 
 .fancylink {
