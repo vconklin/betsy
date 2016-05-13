@@ -39,7 +39,7 @@
 
 <% @order_items.each do |order_item| %>
 <tr>
-  <td><%= order_item.order.id %></td>
+  <td><%= link_to order_item.order.id, order_path(:view => 'merchant', :id => order_item.order.id) %></td>
   <td><%= order_item.quantity %></td>
   <td><%=link_to order_item.product.name, product_path(order_item.product.id) %></td>
   <td><%= order_item.order.completion_status %></td>

@@ -34,7 +34,10 @@
     </td>
     <td>
       <% product.categories.each do |category| %>
-        <%= category.name %>,
+        <%= category.name %>
+        <% unless category == product.categories.last %>
+          ,
+        <% end %>
       <% end %>
     </td>
     <td>

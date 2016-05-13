@@ -42,15 +42,19 @@ skip_before_action :require_login, except: [:index]
 
   def edit
     @product = Product.find(params[:id])
+    @categories = Category.all.order(:name).map{|category| [category.name, category.id]}
   end
 
   def update
-    @product = Product.update(params[:id], product_access_params[:product])
+    # @product = Product.update(params[:id], product_access_params[:product])
+    @product = Product.find(params[:id])
+    @product.update_categories(params[:product][:categories])
     @user ||= User.find_by(id: session[:user_id])
 
-    if @product.save
+    if @product.update(product_access_params[:product])
       redirect_to "/users/#{@user.id}/products"
     else
+      @categories = Category.all.order(:name).map{|category| [category.name, category.id]}
       render :edit
     end
   end
@@ -65,4 +69,5 @@ skip_before_action :require_login, except: [:index]
   def product_access_params
     params.permit(product: [:name, :description, :stock, :price, :status, :image, :user_id])
   end
+
 end

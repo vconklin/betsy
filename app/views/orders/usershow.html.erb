@@ -1,0 +1,7 @@
+<h1> Merchant Detail Form: Order #<%= @order.id %> </h1>
+
+<p>Customer Name: <%= @order.card_name %></p>
+<p>Email: <%= @order.email %></p>
+<p>Address: <%= @order.address %></p>
+<p>Credit Card: ****-****-****-<%= @order.credit_card.to_s.slice(-4..-1) %></p>
+<p>Credit Card Expiration: <%= @order.exp_date %></p>

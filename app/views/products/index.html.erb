@@ -1,16 +1,22 @@
+<br>
+<nav class="bottomnav">
+  <%= link_to "My Products", "/users/#{@user.id}/products", method: :get if current_user %>
+  <%= link_to "Order Fulfillment", "/users/#{@user.id}/orders", method: :get if current_user %>
+  <%= link_to "New Product Category", new_category_path if current_user %>
+</nav>
 
-<%= link_to "My Products", "/users/#{@user.id}/products", method: :get if current_user %>
-<%= link_to "Add New Category", new_category_path if current_user %>
-<%= link_to "Order Fullfillment", "/users/#{@user.id}/orders", method: :get if current_user %>
-
-<%= form_tag products_path, :method => 'get' do %>
+<section class="search">
+<%= form_tag products_path, :method => 'get', :class => "productsearch" do %>
   <%= select_tag(:category_id, options_for_select(@categories), :prompt => 'Search by Category') %>
   <%= submit_tag "Go" %>
 <% end %>
+</section>
 
 <% if @products.empty? %>
-  <br>
-  <p>No products to show. Sorry!</p>
+  <br><br>
+  <div class="thumbnail">
+  <p class="nothinghere">No products to show.</p>
+  </div>
 <% end %>
 
   <div class="container">
@@ -33,7 +39,11 @@
                 <p><%= product.stock == 0 ? "Sold Out!" : "#{product.stock} Available" %></p>
               </div>
 
-              <%= image_tag(product.image, height: '300', width: '300') %>
+              <% if product.image == "" %>
+                <%= image_tag("comingsoon.png", height: '300', width: '300') %>
+              <% else %>
+                <%= image_tag(product.image, height: '300', width: '300') %>
+              <% end %>
             </li>
           </div>
 

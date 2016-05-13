@@ -3,9 +3,13 @@ html {
   font-size: 16px;
 }
 
-
 body {
   background-image: asset-url('honeycomb-bg.jpg');
+}
+
+a {
+  color: black;
+  text-decoration: underline;
 }
 
 ul {
@@ -15,10 +19,39 @@ ul {
 h1.main-title {
   font-size: 6rem;
   font-family: 'Sacramento', cursive;
+  text-align: center;
+}
+
+.topnav {
+  text-align: center;
 }
 
 .topnav a {
   font-size: 2.5rem;
+  font-family: 'Sacramento', cursive;
+  margin: 2rem;
+}
+
+.greeting {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.bottomnav {
+  text-align: center;
+}
+
+.search {
+  text-align: center;
+}
+
+.nothinghere {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.bottomnav a {
+  font-size: 1.5rem;
   font-family: 'Sacramento', cursive;
   margin: 2rem;
 }
@@ -56,7 +89,19 @@ a.merchantname {
   font-size: 1rem;
 }
 
+form.productsearch {
+  font-size: 2rem;
+}
 
+input[type=submit] {
+    padding:2px 5px;
+    background:lightgray;
+    border:1px lightgray solid;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 1rem;
+}
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
