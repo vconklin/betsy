@@ -6,8 +6,6 @@
 <p>Address: <%= @order.address %></p>
 <p>Credit card: <%= @order.to_s.slice(-4..-1).to_i %></p>
 
-<%= @order.completion_status %>
-
 <h3>Order Details</h3>
 <% @order.order_items.each do |order_item| %>
   <p>Name: <%=order_item.product.name %>
