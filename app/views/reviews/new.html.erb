@@ -11,7 +11,7 @@
   <%= f.text_field :text %>
 
   <%= f.label :name %>:
-  <%= f.text_field :name %>
+  <%= f.text_field :name, :value => @username %>
 
   <%= f.hidden_field(:product_id, :value => @product.id)  %>
 

@@ -8,6 +8,11 @@
   <%= submit_tag "Go" %>
 <% end %>
 
+<% if @products.empty? %>
+  <br>
+  <p>No products to show. Sorry!</p>
+<% end %>
+
   <div class="container">
     <ul>
       <div class="row">
