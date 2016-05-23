@@ -1,13 +1,6 @@
 class ProductsController < ApplicationController
 skip_before_action :require_login, except: [:index]
 
-  def require_login
-    if current_user.nil?
-      flash[:error] = "You must be logged in to view this section"
-      redirect_to login_path
-    end
-  end
-
   def index
     if params[:category_id]
       @products = Category.find(params[:category_id]).products
