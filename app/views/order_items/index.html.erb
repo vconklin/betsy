@@ -14,7 +14,7 @@
             <li>Price: <%= product.price %></li>
             <li>Quantity: <%= item.quantity %>
               <% if product.stock > 1 %>
-                <%= form_for(item, url: update_cart_path(item.id), method: :patch) do |f| %>
+                <%= form_for(item, url: edit_cart_path(item.id), method: :patch) do |f| %>
                   <%= f.label "Change Quantity" %>
                   <%= f.select(:quantity, options_for_select((1..product.stock)), include_blank: true) %>
                   <%= f.submit "Update" %>
@@ -23,7 +23,7 @@
                 (Only 1 left in stock!)
               <% end %>
             </li>
-            <li><%= link_to "Remove This Item", {:controller => :order_items, :action => 'destroy', :id => item.id}, method: :delete %></li>
+            <li><%= link_to "Remove This Item", cart_path(item), method: :delete %></li>
           </ul>
         </li>
         <% total += (product.price * item.quantity) %>

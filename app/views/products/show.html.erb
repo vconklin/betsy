@@ -18,7 +18,7 @@
     <% if @product.stock < 1 %>
       <p>Out of Stock</p>
     <% else %>
-      <%= link_to "Add To Cart", cart_path(product_id: @product.id), method: :post, class: 'fancylink' %>
+      <%= link_to "Add To Cart", cart_index_path(product_id: @product.id), method: :post, class: 'fancylink' %>
     <% end %>
   </div>
 
