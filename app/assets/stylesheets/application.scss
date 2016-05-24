@@ -108,6 +108,14 @@ input[type=submit] {
   margin-right: 20px;
 }
 
+a {
+  text-decoration: none
+}
+
+a:hover{
+  text-decoration: none
+}
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
