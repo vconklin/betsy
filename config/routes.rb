@@ -30,16 +30,14 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy", as: :logout
 
   # this route is named non-restfully because an "order" has two main screens: the cart screen and the checkout screen. The url should not contain an id because it is identified by the session, not by any params passed through the url.
-  # get '/cart' => 'order_items#index', as: 'cart'
-  #
-  # # adds the item to that specific order
-  # post '/cart' => 'order_items#create'
-  #
-  # delete '/cart' => 'order_items#destroy'
-  #
-  # patch '/cart/:id' => 'order_items#update', as: 'update_cart'
+  get '/cart' => 'order_items#index', as: 'cart'
 
-  resources :order_items, as: :cart
+  # adds the item to that specific order
+  post '/cart' => 'order_items#create'
+
+  delete '/cart' => 'order_items#destroy'
+
+  patch '/cart/:id' => 'order_items#update', as: 'update_cart'
 
   put 'orders/:id/cancel' => "orders#cancel"
   patch 'orders/:id/complete' => "orders#complete"
