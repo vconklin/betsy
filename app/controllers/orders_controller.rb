@@ -60,16 +60,23 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order.update(completed_time: Time.now, completion_status: "paid")
     @order.save
+    # @order_items = OrderItem.where(order_id: session[:order_id])
+    # session[:order_id] += 1
+    # destroy all cart items
+    # raise
   end
 
   def reduce_inventory(order)
+  # this happens when user confirms payment method on order
   # check that there is enough inventory here
   # add check for inventory and return error if no inventory
-    items = order.order_items
-    items.each do |item|
-    product = item.product
-    quantity = item.quantity
-    product.stock = product.stock - quantity
+    items = order.order_items #items in the cart
+    items.each do |item| #for each item do
+      find = Product.find(item.product_id)
+      product = item.product
+      quantity = item.quantity
+      find.stock = product.stock - quantity
+      find.save
     end
   end
 

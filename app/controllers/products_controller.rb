@@ -14,6 +14,8 @@ skip_before_action :require_login, except: [:index]
   def new
     # give them a shell and invite them to fill out the data.  Allows introspection into the object in the view!
     @product = Product.new
+    @categories = Category.all.order(:name).map{|c| [ c.name, c.id ] }
+
   end
 
   def create
