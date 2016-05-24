@@ -13,4 +13,8 @@ class Order < ActiveRecord::Base
   def require_validations
     persisted?
   end
+
+  def order_total
+    order_items.map { |item| item.sub_total  }.sum
+  end
 end
