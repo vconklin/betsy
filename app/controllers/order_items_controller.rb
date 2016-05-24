@@ -10,7 +10,7 @@ class OrderItemsController < ApplicationController
     # gets the product passed in from the link_to on the products/show page
     @order_item = OrderItem.new(order_id: session[:order_id], quantity: 1, product_id: params[:product_id])
     if @order_item.save
-      redirect_to cart_index_path
+      redirect_to cart_path
     else
       redirect_to products_path
     end
@@ -20,14 +20,14 @@ class OrderItemsController < ApplicationController
     @order_item = OrderItem.find(params[:id])
     @order_item.update(quantity: params[:order_item][:quantity])
 
-    redirect_to cart_index_path
+    redirect_to cart_path
   end
 
   def destroy
     @order_item = OrderItem.find(params[:id])
     @order_item.destroy
 
-    redirect_to cart_index_path
+    redirect_to cart_path
   end
 
 end
