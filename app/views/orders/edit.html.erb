@@ -1,6 +1,6 @@
 <div class="panel panel-warning">
   <div class="panel-body">
-    <h1>Shipping and Billing!</h1>
+    <h1>Shipping and Billing!*</h1>
     <%= link_to "Go back to cart", cart_path %>
 
     <% if @order.errors.any? %>
@@ -13,5 +13,9 @@
       </ul>
     <% end %>
     <%= render partial: "form", locals: {zone: @order} %>
+
+    <p>
+      *Shipping only available within the United States of America.
+    </p>
   </div>
 </div>

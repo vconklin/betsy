@@ -17,4 +17,5 @@ class Order < ActiveRecord::Base
   def order_total
     order_items.map { |item| item.sub_total  }.sum
   end
+
 end

@@ -1,7 +1,7 @@
 
 <%= form_for(zone) do |f| %>
   <p>
-    <%= f.label :card_name %>
+    <%= f.label "Cardholder" %>
     <%= f.text_field :card_name %>
   </p>
 
@@ -13,6 +13,25 @@
   <p>
     <%= f.label :address %>
     <%= f.text_field :address %>
+  </p>
+
+  <p>
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+  </p>
+
+  <p>
+    <%= f.label :state %>
+    <%= f.text_field :state %>
+  </p>
+
+  <p>
+    <%= f.label :zip %>
+    <%= f.text_field :zip %>
+  </p>
+
+  <p>
+    <%= f.hidden_field :country, :value =>'US' %>
   </p>
 
   <p>
@@ -28,11 +47,6 @@
   <p>
     <%= f.label :cvv %>
     <%= f.text_field :cvv %>
-  </p>
-
-  <p>
-    <%= f.label :zip %>
-    <%= f.text_field :zip %>
   </p>
 
 <p>

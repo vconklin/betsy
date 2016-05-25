@@ -12,6 +12,8 @@
     <p>Quantity Ordered: <%= order_item.quantity %></p>
 <% end %>
 
+
+
 <%= button_to "Confirm Purchase", confirmation_path, method: :get,
   :onclick => "return confirm('Are you sure you want to purchase?')" %> <br/> <br/>
 

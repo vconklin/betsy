@@ -2,6 +2,13 @@ class OrdersController < ApplicationController
 
   # fullfillment page for the merchant/seller
   # .select{ |order| order.status == 'paid' }
+    ORIGIN = [{
+      country: 'US',
+      state: 'WA',
+      city: 'Seattle',
+      zip: '98161'
+    }]
+
     def index
       p params
       #filter completion status if the user asks for it
@@ -49,6 +56,31 @@ class OrdersController < ApplicationController
     @order = Order.find(session[:order_id]) #session is persistent, the cookie has the session information.
     @order.update(order_param[:order]) # when you get a request, here is my information for right now.
     reduce_inventory(@order)
+
+    @products_info = @order.order_items.map do |item|
+      product = item.product
+      {
+      weight_lbs:  product.weight_lbs,
+      length_in: product.length_in,
+      height_in: product.height_in,
+      width_in: product.width_in,
+      units: product.units,
+      quantity: item.quantity,
+      item_id: item.id
+    }
+    end
+
+    @place =
+    [{
+      country: @order.country,
+      state: @order.state,
+      city: @order.city,
+      zip: @order.zip
+    }]
+
+    api_response = ShippingWrapper.response(@products_info, @place, ORIGIN)
+    # render json: @products_info.as_json
+    # raise
     if @order.save
       redirect_to order_path
     else
@@ -60,6 +92,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order.update(completed_time: Time.now, completion_status: "paid")
     @order.save
+    raise
     # @order_items = OrderItem.where(order_id: session[:order_id])
     # session[:order_id] += 1
     # destroy all cart items
