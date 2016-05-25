@@ -1,3 +1,5 @@
+require "#{Rails.root}/lib/shippingwrapper.rb"
+
 class OrdersController < ApplicationController
 
   # fullfillment page for the merchant/seller
@@ -72,11 +74,12 @@ class OrdersController < ApplicationController
 
     @place =
     [{
-      country: @order.country,
-      state: @order.state,
-      city: @order.city,
-      zip: @order.zip
+      country: params[:order][:country],
+      state: params[:order][:state],
+      city: params[:order][:city],
+      zip: params[:order][:zip]
     }]
+    
 
     api_response = ShippingWrapper.response(@products_info, @place, ORIGIN)
     # render json: @products_info.as_json
