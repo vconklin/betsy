@@ -96,16 +96,16 @@ class OrdersController < ApplicationController
     }
     end
 
-    @place =
-    [{
+    @place =  {
       country: params[:order][:country],
       state: params[:order][:state],
       city: params[:order][:city],
       zip: params[:order][:zip]
-    }]
+    }
 
 
     api_response = ShippingWrapper.response(@products_info, @place, ORIGIN)
+    raise
     # render json: @products_info.as_json
     # raise
     if @order.save

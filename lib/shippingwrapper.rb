@@ -6,6 +6,7 @@ module ShippingWrapper
   def self.response(products, place, origin)
     body = { products_specs: products, destination: place, origin: origin }.to_json
     data = HTTParty.post(BASE_URL+"/products", { body: body}).parsed_response
+
   end
 
 end
