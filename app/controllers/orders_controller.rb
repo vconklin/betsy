@@ -4,12 +4,12 @@ class OrdersController < ApplicationController
 
   # fullfillment page for the merchant/seller
   # .select{ |order| order.status == 'paid' }
-    ORIGIN = [{
+    ORIGIN = {
       country: 'US',
       state: 'WA',
       city: 'Seattle',
       zip: '98161'
-    }]
+    }
 
     def index
       p params
@@ -73,15 +73,16 @@ class OrdersController < ApplicationController
     end
 
     @place =
-    [{
+    {
       country: params[:order][:country],
       state: params[:order][:state],
       city: params[:order][:city],
       zip: params[:order][:zip]
-    }]
-    
+    }
+
 
     api_response = ShippingWrapper.response(@products_info, @place, ORIGIN)
+    raise
     # render json: @products_info.as_json
     # raise
     if @order.save
