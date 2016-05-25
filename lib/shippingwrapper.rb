@@ -1,10 +1,11 @@
 require 'httparty'
 
 module ShippingWrapper
-  BASE_URL = "https://localhost:3001/"
+  BASE_URL = "http://localhost:3001"
 
   def self.response(products, place, origin)
-    data = HTTParty.post(BASE_URL+"products", {:body => { :products_specs => products, :destination => place, :origin => origin }.to_json}).parsed_response
+    body = { products_specs: products, destination: place, origin: origin }.to_json
+    data = HTTParty.post(BASE_URL+"/products", { body: body}).parsed_response
   end
 
 end
