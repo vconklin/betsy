@@ -56,7 +56,7 @@ class OrdersController < ApplicationController
       end
 
       @place = {
-        country: @order.country,
+        country: "US",
         state: @order.state,
         city: @order.city,
         zip: @order.zip
@@ -64,7 +64,6 @@ class OrdersController < ApplicationController
 
 
       @response = ShippingWrapper.response(@products_info, @place, ORIGIN)
-
 
     end
   end
@@ -104,8 +103,8 @@ class OrdersController < ApplicationController
     }
 
 
-    api_response = ShippingWrapper.response(@products_info, @place, ORIGIN)
-    raise
+    @api_response = ShippingWrapper.response(@products_info, @place, ORIGIN)
+
     # render json: @products_info.as_json
     # raise
     if @order.save

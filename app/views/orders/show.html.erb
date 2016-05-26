@@ -11,7 +11,9 @@
   <p>Name: <%=order_item.product.name %>
     <p>Quantity Ordered: <%= order_item.quantity %></p>
 <% end %>
+<%=@response.class%>
 
+<%=@response.inspect%>
 
 
 <%= button_to "Confirm Purchase", confirmation_path, method: :get,

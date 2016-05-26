@@ -4,7 +4,7 @@ class OrderItemsController < ApplicationController
   def index
     @order = Order.find_by_id(session[:order_id])
     @order_items = OrderItem.where(order_id: session[:order_id]).order("created_at asc")
-    # raise
+
   end
 
   def create
