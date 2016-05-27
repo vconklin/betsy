@@ -1,5 +1,5 @@
 require "#{Rails.root}/lib/shippingwrapper.rb"
-require 'geokit'
+
 
 class OrdersController < ApplicationController
 

@@ -1,6 +1,7 @@
 <div class="panel panel-warning">
   <div class="panel-body">
-    <h1>Your Cart</h1>
+    <h2>Your Cart  <span class="totalcart">Total:<%= @order.order_total%></span>
+</h2>
     <!-- <% if @order.nil? %>
       <p>No items in cart. </p>
     <% else %> -->
@@ -33,7 +34,6 @@
       <% end %>
     </ul>
 
-      <p>Total:<%= @order.order_total%></p>
 
       <%= button_to "Clear Cart", root_path, method: :get, :order => params[:id], :onchange => "this.form.submit()",
       :onclick => "return confirm('Are you sure you want to cancel?')" %> <br/> <br/>

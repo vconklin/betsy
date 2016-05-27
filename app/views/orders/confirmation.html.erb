@@ -1,4 +1,6 @@
-<h1>Confirmation</h1>
+<div class="panel panel-warning">
+  <div class="panel-body">
+    <h2>Confirmation</h2>
 <!-- this is where the user can click yes or no and this can make the order complete -->
 <!-- or if the user decides they no longer want this order they can cancel -->
 <p> <%= link_to @order.id, order_path(@order.id) %></p>
@@ -21,3 +23,6 @@
 <%= link_to "Go back to Product", products_path %><br/><br/>
 <%= button_to "Cancel", {order: params[:id], :controller => :orders, :action => :cancel}, method: :put, :onchange => "this.form.submit()",
 :onclick => "return confirm('Are you sure you want to cancel?')" %>
+</div>
+
+</div>

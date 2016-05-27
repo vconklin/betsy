@@ -9,7 +9,7 @@ body {
 
 a {
   color: black;
-  text-decoration: underline;
+  text-decoration: none
 }
 
 ul {
@@ -108,10 +108,6 @@ input[type=submit] {
   margin-right: 20px;
 }
 
-a {
-  text-decoration: none
-}
-
 a:hover{
   text-decoration: none
 }
@@ -123,6 +119,16 @@ a:hover{
 
 .subtotal {
   text-align: right;
+}
+
+.ordershow {
+  width: 50%;
+  float: left;
+}
+
+.totalcart{
+  float: right;
+  color: orange;
 }
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
