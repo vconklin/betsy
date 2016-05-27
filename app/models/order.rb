@@ -19,7 +19,7 @@ class Order < ActiveRecord::Base
   end
 
   def order_total
-    order_items.map { |item| item.sub_total  }.sum
+    (order_items.map { |item| item.sub_total  }.sum).round(2)
   end
 
 end
