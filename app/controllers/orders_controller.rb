@@ -11,7 +11,6 @@ class OrdersController < ApplicationController
       city: "Seattle",
       zip: "98161"
     }
-    STATES = %w(- AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY)
 
     def index
       p params
@@ -65,17 +64,11 @@ class OrdersController < ApplicationController
       }
 
       @response = ShippingWrapper.response(@products_info, @place, ORIGIN)
-      # if @response.code == "500"
-      #   render :edit
-      # else
-      #   @response
-      # end
     end
   end
 
   def edit
   # show the form for "this" order
-    @states = STATES
     @order = Order.find(session[:order_id])
   end
 
@@ -84,7 +77,6 @@ class OrdersController < ApplicationController
   end
 
   def update
-    @states = STATES
     @order = Order.find(session[:order_id]) #session is persistent, the cookie has the session information.
     @order.update(order_param[:order]) # when you get a request, here is my information for right now.
     reduce_inventory(@order)
@@ -93,17 +85,14 @@ class OrdersController < ApplicationController
     city = params["order"]["city"]
     state = params["order"]["state"]
 
-    response = valid_location(zip, city, state)
+    message = valid_location(zip, city, state)
 
-  if response == ""
-    if @order.save
-      redirect_to order_path
+    if message == ""
+      if @order.save
+        redirect_to order_path
+      end
     else
-      flash[:success] = response
-      render :edit
-    end
-  else
-    flash[:success] = response
+    flash[:success] = message if m!essage.empty?
     render :edit
   end
 end
@@ -111,20 +100,22 @@ end
 
   def valid_location(zip, city, state)
     zips = valid_zip(zip)
-    response = ""
+    message = ""
 
-    unless zips.nil?
+    if !zips.nil?
       zip_city = zip.to_region(:city => true)
       zip_state = zip.to_region(:state => true)
 
       valid_city = city.downcase.strip != zip_city.downcase
       valid_state = state.upcase != zip_state
-      response += " **City does not match zip code. Did you mean: #{zip_city}?  " if valid_city
-      response += " **State does not match zip code and or 2 letter abbreviation. Did you mean: #{zip_state}? "if valid_state
-    else
-      response += "Invalid Zip Code!" if zips.nil?
+      message+=" **City does not match zip code. Did you mean: #{zip_city}? " if valid_city
+      message += " **State does not match zip code and or 2 letter abbreviation. Did you mean: #{zip_state}? "if valid_state
+      # flash[:success] = message
+    elsif zips.nil?
+      message += "Invalid Zip Code!"
+      # flash[:success] = message
     end
-        flash[:success] = response
+    return message
   end
 
   def valid_zip(zip)
@@ -136,7 +127,6 @@ end
   end
 
   def confirmation
-
     @order = Order.find(params[:id])
     @order.update(completed_time: Time.now, completion_status: "paid")
     @order.save
@@ -181,6 +171,6 @@ end
 private
 
   def order_param
-    params.permit(order: [:card_name, :email, :address, :country, :state, :city, :credit_card, :exp_date, :cvv, :zip])
+    params.permit(order: [:card_name, :email, :address, :state, :city, :country, :credit_card, :exp_date, :cvv, :zip])
   end
 end
