@@ -181,6 +181,6 @@ end
 private
 
   def order_param
-    params.permit(order: [:card_name, :email, :address, :state, :city, :credit_card, :exp_date, :cvv, :zip])
+    params.permit(order: [:card_name, :email, :address, :country, :state, :city, :credit_card, :exp_date, :cvv, :zip])
   end
 end

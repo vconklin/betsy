@@ -21,6 +21,8 @@ skip_before_action :require_login, except: [:index]
   def create
     @product = Product.new(product_access_params[:product])
     #any validation?
+    @categories = Category.all.order(:name).map{|c| [ c.name, c.id ] }
+
     if @product.save
       redirect_to "/users/#{current_user.id}/products"
     else
@@ -38,6 +40,7 @@ skip_before_action :require_login, except: [:index]
   def edit
     @product = Product.find(params[:id])
     @categories = Category.all.order(:name).map{|category| [category.name, category.id]}
+    raise
   end
 
   def update
@@ -62,7 +65,7 @@ skip_before_action :require_login, except: [:index]
   private
 
   def product_access_params
-    params.permit(product: [:name, :description, :stock, :price, :status, :image, :user_id])
+    params.permit(product: [:name, :description, :category, :stock, :price, :status, :image, :user_id, :weight_lbs, :length_in, :height_in, :width_in, :units])
   end
 
 end

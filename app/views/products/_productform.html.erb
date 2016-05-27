@@ -16,30 +16,43 @@
       <%= field_set_tag 'Product Information', :html => {:class => "form-group"}  do %>
         <%= f.label "Name" %>
         <%= f.text_field :name, placeholder: "Name" %>
-
+        <br><br>
         <%= f.label "Description" %>
         <%= f.text_field :description, placeholder: "Description" %>
-
+        <br><br>
         <%= f.label "Price" %>
         <%= f.text_field :price, placeholder: "price" %>
-
+        <br><br>
         <%= f.label "Paste Image URL" %>
         <%= f.text_field :image, placeholder: "image URL" %>
-
+        <br><br>
         <%= f.label "Categories" %>
         <%= f.select :categories, options_for_select(@categories, params[:categories]), {}, {multiple: true} %>
-
+        <br><br>
         <%= f.label "Stock" %>
         <%= f.text_field :stock, placeholder: "Stock" %>
-
+        <br><br>
+        <%= f.label "Weight lbs" %>
+        <%= f.text_field :weight_lbs, placeholder: "Number here" %>
+        <br><br>
+        <%= f.label "Height in Inches" %>
+        <%= f.text_field :height_in, placeholder: "Number here" %>
+        <br><br>
+        <%= f.label "Length in Inches" %>
+        <%= f.text_field :length_in, placeholder: "Number here" %>
+        <br><br>
+        <%= f.label "Width in Inches" %>
+        <%= f.text_field :width_in, placeholder: "Number here" %>
+        <br><br>
+        <%= f.hidden_field :units, :value => "imperial" %>
+        <br><br>
         <%= f.label "Status" %>
         <%= f.select :status, options_for_select([
           ["active"],["retired"]]),{},html_options = {:class => "listBox"}%>
-
+          <br><br>
         <%= f.hidden_field :user_id, value: params[:user_id] || current_user.id %>
-
+        <br><br>
         <%= f.submit %>
-
       <% end %>
     <% end %>
   </div>
