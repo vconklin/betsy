@@ -63,13 +63,8 @@ class OrdersController < ApplicationController
         city: @order.city,
         zip: @order.zip
       }
-
+      
       @response = ShippingWrapper.response(@products_info, @place, ORIGIN)
-      # if @response.code == "500"
-      #   render :edit
-      # else
-      #   @response
-      # end
     end
   end
 
@@ -93,17 +88,16 @@ class OrdersController < ApplicationController
     city = params["order"]["city"]
     state = params["order"]["state"]
 
-    response = valid_location(zip, city, state)
-
-  if response == ""
+    message = valid_location(zip, city, state)
+  if message == ""
     if @order.save
       redirect_to order_path
-    else
-      flash[:success] = response
-      render :edit
+    # else
+    #   flash[:success] = message
+    #   render :edit
     end
   else
-    flash[:success] = response
+    flash[:success] = message
     render :edit
   end
 end
@@ -111,7 +105,7 @@ end
 
   def valid_location(zip, city, state)
     zips = valid_zip(zip)
-    response = ""
+    message = ""
 
     unless zips.nil?
       zip_city = zip.to_region(:city => true)
@@ -119,12 +113,12 @@ end
 
       valid_city = city.downcase.strip != zip_city.downcase
       valid_state = state.upcase != zip_state
-      response += " **City does not match zip code. Did you mean: #{zip_city}?  " if valid_city
-      response += " **State does not match zip code and or 2 letter abbreviation. Did you mean: #{zip_state}? "if valid_state
+      message += " **City does not match zip code. Did you mean: #{zip_city}?  " if valid_city
+      message += " **State does not match zip code and or 2 letter abbreviation. Did you mean: #{zip_state}? "if valid_state
     else
-      response += "Invalid Zip Code!" if zips.nil?
+      message += "Invalid Zip Code!" if zips.nil?
     end
-        flash[:success] = response
+        flash[:success] = message
   end
 
   def valid_zip(zip)
@@ -136,7 +130,6 @@ end
   end
 
   def confirmation
-
     @order = Order.find(params[:id])
     @order.update(completed_time: Time.now, completion_status: "paid")
     @order.save
@@ -181,6 +174,6 @@ end
 private
 
   def order_param
-    params.permit(order: [:card_name, :email, :address, :state, :city, :credit_card, :exp_date, :cvv, :zip])
+    params.permit(order: [:card_name, :email, :address, :state, :city, :country, :credit_card, :exp_date, :cvv, :zip])
   end
 end
