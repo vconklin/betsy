@@ -2,8 +2,9 @@ class OrderItemsController < ApplicationController
 
   # this is the cart page
   def index
-    @order = Order.find(session[:order_id])
+    @order = Order.find_by_id(session[:order_id])
     @order_items = OrderItem.where(order_id: session[:order_id]).order("created_at asc")
+
   end
 
   def create

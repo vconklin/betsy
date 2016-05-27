@@ -1,13 +1,6 @@
 class ProductsController < ApplicationController
 skip_before_action :require_login, except: [:index]
 
-  def require_login
-    if current_user.nil?
-      flash[:error] = "You must be logged in to view this section"
-      redirect_to login_path
-    end
-  end
-
   def index
     if params[:category_id]
       @products = Category.find(params[:category_id]).products
@@ -21,11 +14,15 @@ skip_before_action :require_login, except: [:index]
   def new
     # give them a shell and invite them to fill out the data.  Allows introspection into the object in the view!
     @product = Product.new
+    @categories = Category.all.order(:name).map{|c| [ c.name, c.id ] }
+
   end
 
   def create
     @product = Product.new(product_access_params[:product])
     #any validation?
+    @categories = Category.all.order(:name).map{|c| [ c.name, c.id ] }
+
     if @product.save
       redirect_to "/users/#{current_user.id}/products"
     else
@@ -43,6 +40,7 @@ skip_before_action :require_login, except: [:index]
   def edit
     @product = Product.find(params[:id])
     @categories = Category.all.order(:name).map{|category| [category.name, category.id]}
+    raise
   end
 
   def update
@@ -67,7 +65,7 @@ skip_before_action :require_login, except: [:index]
   private
 
   def product_access_params
-    params.permit(product: [:name, :description, :stock, :price, :status, :image, :user_id])
+    params.permit(product: [:name, :description, :category, :stock, :price, :status, :image, :user_id, :weight_lbs, :length_in, :height_in, :width_in, :units])
   end
 
 end

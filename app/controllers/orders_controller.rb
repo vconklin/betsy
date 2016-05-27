@@ -1,7 +1,17 @@
+require "#{Rails.root}/lib/shippingwrapper.rb"
+require 'area'
+
 class OrdersController < ApplicationController
 
   # fullfillment page for the merchant/seller
-  # .select{ |order| order.status == 'paid' }
+  # .select{ |order| order.status == "paid" }
+    ORIGIN = {
+      country: "US",
+      state: "WA",
+      city: "Seattle",
+      zip: "98161"
+    }
+
     def index
       p params
       #filter completion status if the user asks for it
@@ -11,7 +21,7 @@ class OrdersController < ApplicationController
         @products = Product.where(user_id: params[:id])
         p @products
         @order_items = OrderItem.where(product: @products, order: @orders)
-          p @order_items
+        p @order_items
       else
         @products = Product.where(user_id: params[:id])
         @order_items = OrderItem.where(product: @products)
@@ -28,11 +38,33 @@ class OrdersController < ApplicationController
 
   # confirmation page
   def show
-    if params[:view] == 'merchant'
+    if params[:view] == "merchant"
       @order = Order.find(params[:id])
       render :usershow
     else
       @order = Order.find(session[:order_id])
+      @products_info = @order.order_items.map do |item|
+        product = item.product
+        {
+        weight_lbs:  product.weight_lbs,
+        length_in: product.length_in,
+        height_in: product.height_in,
+        width_in: product.width_in,
+        units: product.units,
+        quantity: item.quantity,
+        item_id: item.id
+        }
+      end
+
+      @place = {
+        country: @order.country,
+        state: @order.state,
+        city: @order.city,
+        zip: @order.zip
+      }
+
+      @response = ShippingWrapper.response(@products_info, @place, ORIGIN)
+      
     end
   end
 
@@ -48,11 +80,51 @@ class OrdersController < ApplicationController
   def update
     @order = Order.find(session[:order_id]) #session is persistent, the cookie has the session information.
     @order.update(order_param[:order]) # when you get a request, here is my information for right now.
+
     reduce_inventory(@order)
-    if @order.save
+
+    zip = params["order"]["zip"]
+    city = params["order"]["city"]
+    state = params["order"]["state"]
+    # message = ""
+    message = valid_location(zip, city, state)
+
+
+    if @order.save && message == ""
       redirect_to order_path
     else
+      flash.now[:message] = message if !message.empty?
       render :edit
+    end
+  end
+
+
+  def valid_location(zip, city, state)
+    zips = valid_zip(zip)
+    message = ""
+
+    if !zips.nil?
+      zip_city = zip.to_region(:city => true)
+      zip_state = zip.to_region(:state => true)
+
+      valid_city = city.downcase.strip != zip_city.downcase
+      valid_state = state.upcase != zip_state
+      message+=" **City does not match zip code. Did you mean: #{zip_city}? " if valid_city
+      message += " **State does not match zip code and or 2 letter abbreviation. Did you mean: #{zip_state}? "if valid_state
+      # flash[:success] = message
+    elsif zips.nil?
+      message += "Invalid Zip Code!"
+      # flash[:success] = message
+    end
+    # raise
+    return message
+  end
+
+  def valid_zip(zip)
+    if zip.length == 5
+      return zip.to_region
+    else
+      return nil
     end
   end
 
@@ -60,16 +132,37 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order.update(completed_time: Time.now, completion_status: "paid")
     @order.save
+
+
+    # @order_items = OrderItem.where(order_id: session[:order_id])
+    # session[:order_id] += 1
+    # destroy all cart items
+    # raise
+  end
+
+  def shipping
+    @order = Order.find(params[:id])
+    hash = JSON.parse(params["rate"])
+    rate = hash.values.first.to_i/100.0
+    type= hash.keys.first
+    total_shipping = @order.order_total + rate
+
+    @order.update(shipping_rate: rate, total_with_shipping: total_shipping, shipping_type: type)
+
+    redirect_to order_path
   end
 
   def reduce_inventory(order)
+  # this happens when user confirms payment method on order
   # check that there is enough inventory here
   # add check for inventory and return error if no inventory
-    items = order.order_items
-    items.each do |item|
-    product = item.product
-    quantity = item.quantity
-    product.stock = product.stock - quantity
+    items = order.order_items #items in the cart
+    items.each do |item| #for each item do
+      find = Product.find(item.product_id)
+      product = item.product
+      quantity = item.quantity
+      find.stock = product.stock - quantity
+      find.save
     end
   end
 
@@ -94,6 +187,7 @@ class OrdersController < ApplicationController
 private
 
   def order_param
-    params.permit(order: [:card_name, :email, :address, :credit_card, :exp_date, :cvv, :zip])
+
+    params.permit(order: [:card_name, :email, :address, :state, :city, :country, :credit_card, :exp_date, :cvv, :zip])
   end
 end

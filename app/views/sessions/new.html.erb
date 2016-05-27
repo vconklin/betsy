@@ -1,10 +1,13 @@
 <h1>Sign in, please:</h1>
+<div class="panel panel-warning">
+  <div class="panel-body">
+    <%= form_tag sessions_path, method: :post do%>
+      <%= label_tag :email, "Email Address: "%>
+      <%= text_field_tag :email%>
+      <%= label_tag :password, "Password: " %>
+      <%= password_field_tag :password%>
 
-<%= form_tag sessions_path, method: :post do%>
-  <%= label_tag :email, "Email Address: "%>
-  <%= text_field_tag :email%>
-  <%= label_tag :password, "Password: " %>
-  <%= password_field_tag :password%>
-
-  <%= submit_tag "Submit"%>
-<% end %>
+      <%= submit_tag "Submit"%>
+    <% end %>
+  </div>
+</div>

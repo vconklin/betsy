@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160512164155) do
+ActiveRecord::Schema.define(version: 20160527195103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,14 +42,20 @@ ActiveRecord::Schema.define(version: 20160512164155) do
     t.string   "card_name"
     t.string   "email"
     t.string   "address"
-    t.integer  "credit_card"
+    t.string   "credit_card"
     t.string   "exp_date"
     t.integer  "cvv"
     t.string   "zip"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.string   "completion_status"
     t.datetime "completed_time"
+    t.string   "state"
+    t.string   "city"
+    t.string   "country"
+    t.decimal  "total_with_shipping"
+    t.string   "shipping_type"
+    t.decimal  "shipping_rate"
   end
 
   create_table "products", force: :cascade do |t|
@@ -62,6 +68,11 @@ ActiveRecord::Schema.define(version: 20160512164155) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "image"
+    t.integer  "weight_lbs",  null: false
+    t.integer  "length_in",   null: false
+    t.integer  "width_in",    null: false
+    t.integer  "height_in",   null: false
+    t.string   "units"
   end
 
   create_table "reviews", force: :cascade do |t|

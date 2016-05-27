@@ -19,7 +19,6 @@
   </div>
 <% end %>
 
-  <div class="container">
     <ul>
       <div class="row">
       <% @products.each do |product| %>
@@ -29,7 +28,10 @@
           <div class="thumbnail">
             <li>
               <div class="caption">
+                <div class="producttitle">
+
                 <%= link_to product.name, product_path(product.id) %>
+                </div>
 
                 <span class="price">$<%= product.price/100.00 %></span>
 
@@ -37,13 +39,13 @@
                 <%= link_to merchant.username, user_path(merchant.id), class: "merchantname" %>
 
                 <p><%= product.stock == 0 ? "Sold Out!" : "#{product.stock} Available" %></p>
-              </div>
 
               <% if product.image == "" %>
                 <%= image_tag("comingsoon.png", height: '300', width: '300') %>
               <% else %>
                 <%= image_tag(product.image, height: '300', width: '300') %>
               <% end %>
+            </div>
             </li>
           </div>
 
@@ -52,4 +54,3 @@
       </div>
 
     </ul>
-  </div>

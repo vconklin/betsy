@@ -1,28 +1,32 @@
 <h1>Welcome to the Sign Up page!</h1>
+<div class="panel panel-warning">
+  <div class="panel-body">
+    <% if @new_user.errors.any? %>
+      <div class="errors">
+        <h2> ERROR!!!! </h2>
+        <ul>
+          <% @new_user.errors.each do |attribute, message| %>
+            <li><strong><%= attribute %></strong>: <%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-<% if @new_user.errors.any? %>
-  <div class="errors">
-    <h2> ERROR!!!! </h2>
-    <ul>
-      <% @new_user.errors.each do |attribute, message| %>
-        <li><strong><%= attribute %></strong>: <%= message %></li>
-      <% end %>
-    </ul>
+    <%= form_for @new_user do |f| %>
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+      <br><br>
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+      <br><br>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+      <br><br>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+      <br><br>
+
+      <%= f.submit %>
+    <% end %>
   </div>
-<% end %>
-
-<%= form_for @new_user do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
-
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-
-  <%= f.submit %>
-<% end %>
+</div>
