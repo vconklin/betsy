@@ -3,7 +3,7 @@
 
 <p>Name: <%= @order.card_name %></p>
 <p>Email: <%= @order.email %></p>
-<p>Address: <%= @order.address %></p>
+<p>Address: <%= "#{@order.address}, #{@order.city}, #{@order.state}, #{@order.zip}" %></p>
 <p>Credit card: <%= @order.to_s.slice(-4..-1).to_i %></p>
 
 <h3>Order Details</h3>
@@ -11,6 +11,7 @@
   <p>Name: <%=order_item.product.name %>
     <p>Quantity Ordered: <%= order_item.quantity %></p>
 <% end %>
+
 <%=@response.class%>
 
 <%=@response.inspect%>
