@@ -4,21 +4,24 @@
 <!-- this is where the user can click yes or no and this can make the order complete -->
 <!-- or if the user decides they no longer want this order they can cancel -->
 <p> <%= link_to @order.id, order_path(@order.id) %></p>
-<%=@api_response.inspect%>
-<%=@response.inspect%>
 
-<% total = 0 %>
 <h3>Order Details</h3>
 <% @order.order_items.each do |order_item| %>
-  <% total+=order_item.quantity * order_item.product.price  %>
-  <p>Your order of: <%=link_to order_item.product.name, product_path(order_item.product.id) %><p> $<%= order_item.product.price %></p></p>
+
+  <p>Your order of: <%=link_to order_item.product.name, product_path(order_item.product.id) %></p>
 
 <p>Name: <%=order_item.product.name %>
-<p>Quantity Ordered: <%= order_item.quantity %></p>
+<p>Quantity Ordered: <%= order_item.quantity %> ||| <span>$<%= order_item.sub_total  %></span></p>
+<br><br>
 <% end %>
-
+<br>
+<br>
 <p>Order placed on:  <%= @order.completed_time.localtime.strftime("%B %-d, %Y %I:%M %p") %>
-<p>Total Purchase: $ <%= total  %> <br/>
+
+<p>Order Total: $<%=@order.order_total%></p>
+
+<p> Total with Shipping: $<%=@order.total_with_shipping%></p>
+<br><br><br><br>
 
 <%= link_to "Go back to Product", products_path %><br/><br/>
 <%= button_to "Cancel", {order: params[:id], :controller => :orders, :action => :cancel}, method: :put, :onchange => "this.form.submit()",

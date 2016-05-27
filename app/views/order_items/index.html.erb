@@ -6,16 +6,15 @@
       <p>No items in cart. </p>
     <% else %> -->
     <ul>
-      <% total = 0 %>
       <% @order_items.each do |item| %>
         <% product = Product.find(item.product_id) %>
         <li>
           <%= image_tag product.image, height: '100', width: '100', class: "productpic" %>
 
-          <h4><%= product.name %> <span class="subtotal">Sub-Total: <%= item.sub_total %></span></h4>
+          <h4><%= product.name %> <span class="subtotal">Sub-Total: $<%= item.sub_total %></span></h4>
 
           <ul>
-            <li>Price: <%= product.price %></li>
+            <li>Price: $<%= product.price/100.0 %></li>
             <li>Quantity: <%= item.quantity %>
               <% if product.stock > 1 %>
                 <%= form_for(item, url: update_cart_path(item.id), method: :patch) do |f| %>
