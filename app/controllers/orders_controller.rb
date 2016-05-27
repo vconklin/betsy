@@ -64,6 +64,7 @@ class OrdersController < ApplicationController
       }
 
       @response = ShippingWrapper.response(@products_info, @place, ORIGIN)
+      
     end
   end
 
@@ -132,7 +133,7 @@ class OrdersController < ApplicationController
     @order.update(completed_time: Time.now, completion_status: "paid")
     @order.save
 
-  
+
     # @order_items = OrderItem.where(order_id: session[:order_id])
     # session[:order_id] += 1
     # destroy all cart items

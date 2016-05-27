@@ -1,12 +1,12 @@
 {
   "MiniTest": {
     "coverage": {
-      "/Users/melissajimison/Documents/c5/projects/shipping/betsy/app/models/category.rb": [
+      "/Users/cristal/C5/projects/shipping/betsy/app/models/category.rb": [
         1,
         1,
         null
       ],
-      "/Users/melissajimison/Documents/c5/projects/shipping/betsy/app/models/order_item.rb": [
+      "/Users/cristal/C5/projects/shipping/betsy/app/models/order_item.rb": [
         1,
         1,
         1,
@@ -19,7 +19,7 @@
         null,
         null
       ],
-      "/Users/melissajimison/Documents/c5/projects/shipping/betsy/app/models/order.rb": [
+      "/Users/cristal/C5/projects/shipping/betsy/app/models/order.rb": [
         1,
         1,
         1,
@@ -46,13 +46,18 @@
         null,
         null
       ],
-      "/Users/melissajimison/Documents/c5/projects/shipping/betsy/app/models/product.rb": [
+      "/Users/cristal/C5/projects/shipping/betsy/app/models/product.rb": [
         1,
         1,
         1,
         1,
         1,
         null,
+        1,
+        1,
+        1,
+        1,
+        1,
         1,
         1,
         null,
@@ -70,7 +75,7 @@
         null,
         null
       ],
-      "/Users/melissajimison/Documents/c5/projects/shipping/betsy/app/models/review.rb": [
+      "/Users/cristal/C5/projects/shipping/betsy/app/models/review.rb": [
         1,
         1,
         null,
@@ -78,7 +83,7 @@
         null,
         null
       ],
-      "/Users/melissajimison/Documents/c5/projects/shipping/betsy/app/models/user.rb": [
+      "/Users/cristal/C5/projects/shipping/betsy/app/models/user.rb": [
         1,
         1,
         1,
@@ -138,6 +143,6 @@
         null
       ]
     },
-    "timestamp": 1464308924
+    "timestamp": 1464385877
   }
 }
