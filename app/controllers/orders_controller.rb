@@ -85,16 +85,15 @@ class OrdersController < ApplicationController
     zip = params["order"]["zip"]
     city = params["order"]["city"]
     state = params["order"]["state"]
-    message = ""
-
+    # message = ""
     message = valid_location(zip, city, state)
 
-    # raise
+
     if @order.save && message == ""
-        redirect_to order_path
+      redirect_to order_path
     else
-    flash[:success] = message if !message.empty?
-    render :edit
+      flash.now[:message] = message if !message.empty?
+      render :edit
     end
   end
 
