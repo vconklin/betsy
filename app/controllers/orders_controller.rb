@@ -79,22 +79,23 @@ class OrdersController < ApplicationController
   def update
     @order = Order.find(session[:order_id]) #session is persistent, the cookie has the session information.
     @order.update(order_param[:order]) # when you get a request, here is my information for right now.
+
     reduce_inventory(@order)
 
     zip = params["order"]["zip"]
     city = params["order"]["city"]
     state = params["order"]["state"]
-
+    message = ""
+    
     message = valid_location(zip, city, state)
 
-    if message == ""
-      if @order.save
+    # raise
+    if @order.save && message == ""
         redirect_to order_path
-      end
     else
-    flash[:success] = message if m!essage.empty?
-    render :edit
-  end
+      flash[:success] = message if !message.empty?
+      render :edit
+    end
 end
 
 
@@ -115,6 +116,7 @@ end
       message += "Invalid Zip Code!"
       # flash[:success] = message
     end
+    # raise
     return message
   end
 
