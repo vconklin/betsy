@@ -86,17 +86,17 @@ class OrdersController < ApplicationController
     city = params["order"]["city"]
     state = params["order"]["state"]
     message = ""
-    
+
     message = valid_location(zip, city, state)
 
     # raise
     if @order.save && message == ""
         redirect_to order_path
     else
-      flash[:success] = message if !message.empty?
-      render :edit
+    flash[:success] = message if !message.empty?
+    render :edit
     end
-end
+  end
 
 
   def valid_location(zip, city, state)
@@ -173,6 +173,7 @@ end
 private
 
   def order_param
+
     params.permit(order: [:card_name, :email, :address, :state, :city, :country, :credit_card, :exp_date, :cvv, :zip])
   end
 end

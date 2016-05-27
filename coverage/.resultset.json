@@ -1,35 +1,52 @@
 {
   "MiniTest": {
     "coverage": {
-      "/Users/annamason/C5/projects/betsy/app/models/category.rb": [
+      "/Users/melissajimison/Documents/c5/projects/shipping/betsy/app/models/category.rb": [
         1,
         1,
         null
       ],
-      "/Users/annamason/C5/projects/betsy/app/models/order_item.rb": [
+      "/Users/melissajimison/Documents/c5/projects/shipping/betsy/app/models/order_item.rb": [
         1,
         1,
         1,
         null,
         1,
+        null,
+        1,
+        0,
         null,
         null,
         null
       ],
-      "/Users/annamason/C5/projects/betsy/app/models/order.rb": [
+      "/Users/melissajimison/Documents/c5/projects/shipping/betsy/app/models/order.rb": [
         1,
         1,
         1,
         null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        0,
         null,
         null,
-        null,
-        null,
+        1,
+        0,
         null,
         null,
         null
       ],
-      "/Users/annamason/C5/projects/betsy/app/models/product.rb": [
+      "/Users/melissajimison/Documents/c5/projects/shipping/betsy/app/models/product.rb": [
         1,
         1,
         1,
@@ -39,10 +56,21 @@
         1,
         1,
         null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        0,
+        null,
+        0,
         null,
         null
       ],
-      "/Users/annamason/C5/projects/betsy/app/models/review.rb": [
+      "/Users/melissajimison/Documents/c5/projects/shipping/betsy/app/models/review.rb": [
         1,
         1,
         null,
@@ -50,7 +78,7 @@
         null,
         null
       ],
-      "/Users/annamason/C5/projects/betsy/app/models/user.rb": [
+      "/Users/melissajimison/Documents/c5/projects/shipping/betsy/app/models/user.rb": [
         1,
         1,
         1,
@@ -89,30 +117,11 @@
         null,
         1,
         null,
-        null,
         0,
         0,
-        0,
-        null,
-        0,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/Users/annamason/C5/projects/betsy/app/controllers/categories_controller.rb": [
-        1,
-        1,
-        null,
-        1,
-        0,
-        null,
         null,
         null,
         1,
-        0,
-        0,
-        null,
         null,
         1,
         0,
@@ -122,119 +131,13 @@
         null,
         1,
         0,
-        null,
-        0,
-        0,
-        null,
         0,
         null,
         null,
-        null,
-        1,
-        null,
-        1,
-        0,
-        null,
-        null,
-        1,
-        0,
-        0,
-        0,
-        null,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/Users/annamason/C5/projects/betsy/app/controllers/application_controller.rb": [
-        1,
-        null,
-        null,
-        1,
-        1,
-        null,
-        1,
-        6,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/Users/annamason/C5/projects/betsy/app/helpers/application_helper.rb": [
-        1,
-        null
-      ],
-      "/Users/annamason/C5/projects/betsy/app/helpers/categories_helper.rb": [
-        1,
-        null
-      ],
-      "/Users/annamason/C5/projects/betsy/app/helpers/order_items_helper.rb": [
-        1,
-        null
-      ],
-      "/Users/annamason/C5/projects/betsy/app/helpers/orders_helper.rb": [
-        1,
-        null
-      ],
-      "/Users/annamason/C5/projects/betsy/app/helpers/products_helper.rb": [
-        1,
-        null
-      ],
-      "/Users/annamason/C5/projects/betsy/app/helpers/reviews_helper.rb": [
-        1,
-        null
-      ],
-      "/Users/annamason/C5/projects/betsy/app/helpers/sessions_helper.rb": [
-        1,
-        null
-      ],
-      "/Users/annamason/C5/projects/betsy/app/helpers/users_helper.rb": [
-        1,
-        null
-      ],
-      "/Users/annamason/C5/projects/betsy/app/controllers/reviews_controller.rb": [
-        1,
-        null,
-        1,
-        1,
-        1,
-        1,
-        0,
-        null,
-        1,
-        null,
-        null,
-        null,
-        1,
-        1,
-        1,
-        1,
-        1,
-        0,
-        0,
-        0,
-        null,
-        0,
-        0,
-        null,
-        null,
-        null,
-        1,
-        1,
-        1,
-        null,
-        null,
-        1,
-        0,
         null,
         null
       ]
     },
-    "timestamp": 1463171015
+    "timestamp": 1464308924
   }
 }
