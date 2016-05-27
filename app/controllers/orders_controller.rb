@@ -92,7 +92,7 @@ class OrdersController < ApplicationController
         redirect_to order_path
       end
     else
-    flash[:success] = message if m!essage.empty?
+    flash[:success] = message if !message.empty?
     render :edit
   end
 end
@@ -171,6 +171,7 @@ end
 private
 
   def order_param
+
     params.permit(order: [:card_name, :email, :address, :state, :city, :country, :credit_card, :exp_date, :cvv, :zip])
   end
 end
