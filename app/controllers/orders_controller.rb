@@ -131,10 +131,24 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order.update(completed_time: Time.now, completion_status: "paid")
     @order.save
+
+  
     # @order_items = OrderItem.where(order_id: session[:order_id])
     # session[:order_id] += 1
     # destroy all cart items
     # raise
+  end
+
+  def shipping
+    @order = Order.find(params[:id])
+    hash = JSON.parse(params["rate"])
+    rate = hash.values.first.to_i/100.0
+    type= hash.keys.first
+    total_shipping = @order.order_total + rate
+
+    @order.update(shipping_rate: rate, total_with_shipping: total_shipping, shipping_type: type)
+
+    redirect_to order_path
   end
 
   def reduce_inventory(order)
