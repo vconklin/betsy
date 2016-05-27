@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :orders, except: [:index]
 
   get 'orders/:id/confirmation' => 'orders#confirmation', as: :confirmation
-
+  post	'/orders/:id' =>	'orders#shipping'
 
   get 'users/:id/orders/' => 'orders#index'
   # shipping button
